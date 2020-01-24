@@ -1,0 +1,125 @@
+html, body {
+	padding: 0px;
+	font-family: arial;
+	background-color: #eeeeee;
+}
+div.banner {
+	padding-top:40px;
+	text-align: center;
+}
+img.bannerImg {
+	border-radius: 100%;
+	width: 200px;
+	height: 200px;
+}
+div.main {
+	float: left;
+	max-width: 60vw;
+	min-width: 60vw;
+	padding: 2vw 4vw;
+	margin: 2vw 3vw 2vw 6vw;
+	border-radius: 10px;
+}
+div.panel {
+	float: left;
+	display: inline;
+	width: 7vw;
+	max-width: 60vw;
+	padding: 4px 4vw;
+	text-align: center !important;
+	margin: 2vw 6vw 2vw 0px;
+	border-radius: 10px;
+}
+div.main, div.panel {
+	background-color: #faf6f6;
+}
+div.panel > em {
+	font-size: x-small;
+	color: gray;
+}
+h1 {
+	margin-bottom: 0px;
+}
+p.about {
+	color: gray;
+	font-style: italic;
+	margin-top: 4px;
+}
+ul.navigation {
+	list-style-type: none;
+	text-align: center;
+	padding-left: 0px;
+}
+ul.navigation > li {
+	margin: 4px 0px;
+}
+ul.navigation > li > a {
+	text-decoration: none;
+	color: #000000;
+}
+a.link, a.linkBlank {
+	text-decoration: none;
+}
+a.linkBlank {
+	color: #000000;
+}
+li > ul {
+	padding-left: 18px;
+	list-style-type: disc;
+}
+.noBottom {
+	margin-bottom: 0px;
+	padding-bottom: 0px;
+}
+.noTop {
+	margin-top: 0px;
+	padding-top: 0px;
+}
+table.formTableAlignment {
+	width: 100%;
+	min-width: 100%
+}
+table.displayTableInline {
+	float: left;
+	min-width: 50%;
+}
+.inputArea {
+	float:right;
+	width: 95%;
+	min-height: 30px;
+	padding: 6px;
+	font-size: large;
+	border-radius: 6px;
+	border-width: 1px;
+	border-color: #9a9a9a;
+}
+input.submitButton {
+	width: 100%;
+	margin: 1vw 0px;
+	height: 40px;
+	border-radius: 10px;
+	background-color: #ecebf4;
+	border-width: 0px;
+	cursor: pointer;
+	font-size: x-large;
+}
+input.submitButton:hover {
+	background-color: #c4c2cf;
+	color: #313131;
+}
+textarea.inputArea {
+	float: left;
+	margin-left: 2px;
+	min-width: 98%;
+	resize: vertical;
+	min-height: 160px;
+	max-height: 500px;
+	margin-top: 3px;
+}
+@media (max-width:1480px) {
+	div.main, div.panel {
+		max-width: 80vw;
+		min-width: 60vw;
+		margin: 2vw 14.5vw;
+	}
+}

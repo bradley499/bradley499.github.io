@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+			<title>Contact ~ Bradley Marshall</title>
+			<meta name="robots" content="noindex" />
+			<link rel="stylesheet" type="text/css" href="assets/style.css">
+			<script type="text/javascript">
+				window.addEventListener("load",function() {
+					document.getElementById('gform').addEventListener("submit",function(e) {
+						document.getElementById('hidden_iframe').addEventListener("load", function() {
+							window.location.href = "submitted"
+						});
+					});
+				});			
+			</script>
+	</head>
+	<body>
+		<div class="banner">
+			<a href="/"><img src="assets/me.jpeg" class="bannerImg" /></a>
+			<h1>Bradley Marshall</h1>
+			<p class="about">Where design and simplicity meets functionality...</p>
+		</div>
+		<div div="content">
+			<div class="main">
+				<div class="mainContent">
+					<form name="gform" id="gform" enctype="text/plain" action="https://docs.google.com/forms/d/e/1FAIpQLSc5xLc9h-3qkcOjOtT22nk5eh80iPMY1-oxVh9-CANb3rPqIA/formResponse?" target="hidden_iframe" onsubmit="submitted=true;">
+						<table class="formTableAlignment">
+							<tr>
+								<td>
+									<div>
+										<table class="displayTableInline"><tr><td width="35px">Name:</td><td><input type="text" name="entry.2005620554" id="entry.2005620554" class="inputArea" placeholder="John Doe" required="required"></td></tr></table>
+										<table class="displayTableInline"><tr><td width="120px">Email address:</td><td><input type="email" name="entry.1045781291" id="entry.1045781291" class="inputArea" placeholder="john@doe.com" required="required"></td></tr></table>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<textarea name="entry.839337160" id="entry.839337160" placeholder=" Message..." class="inputArea" required="required"></textarea>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<input type="submit" value="Submit" class="submitButton">
+								</td>
+							</tr>
+						</table>
+					</form>
+					<iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted) {}"></iframe>
+				</div>
+			</div>
+			<div class="panel">
+				<ul class="navigation">
+					<li>
+						<a href="/" title="Home">Home</a>
+					</li>
+					<li>
+						<a href="/contact" title="Contact">Contact</a>
+					</li>
+					<li>
+						<a href="https://github.com/bradley499/" title="Github @bradley499">GitHub</a>
+					</li>
+				</ul>
+				<hr>
+				<em>&copy; Bradley Marshall</em>
+			</div>
+		</div>
+	</body>
+</html>
