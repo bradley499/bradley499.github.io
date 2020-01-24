@@ -116,6 +116,7 @@ textarea.inputArea {
 	min-height: 160px;
 	max-height: 500px;
 	margin-top: 3px;
+	font-family: arial;
 }
 @media (max-width:1480px) {
 	div.main, div.panel {
