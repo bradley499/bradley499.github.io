@@ -132,15 +132,13 @@ textarea.inputArea {
 		min-width: 80vw;
 		margin: 2vw 4vw;
 	}
-	span.addressDisplayBuffer
-	{
+	span.addressDisplayBuffer {
 		display: none;
 	}
 	.itemHold {
 		width: 60px !important;
 	}
-	textarea.inputArea
-	{
+	textarea.inputArea {
 		min-width: 97%;
 		max-width: 97%;
 	}
@@ -150,5 +148,9 @@ textarea.inputArea {
 	table.displayTableInline
 	{
 		width: 100%;
+	}
+	textarea.inputArea {
+		min-width: 93%;
+		max-width: 93%;
 	}
 }
