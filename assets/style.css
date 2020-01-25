@@ -84,6 +84,14 @@ table.displayTableInline {
 	float: left;
 	min-width: 50%;
 }
+td.itemHold
+{
+	width: 60px;
+}
+td.itemHoldLarge
+{
+	width: 120px;
+}
 .inputArea {
 	float:right;
 	width: 95%;
@@ -123,5 +131,24 @@ textarea.inputArea {
 		max-width: 80vw;
 		min-width: 80vw;
 		margin: 2vw 4vw;
+	}
+	span.addressDisplayBuffer
+	{
+		display: none;
+	}
+	.itemHold {
+		width: 60px !important;
+	}
+	textarea.inputArea
+	{
+		min-width: 97%;
+		max-width: 97%;
+	}
+}
+
+@media (max-width:1480px) {
+	table.displayTableInline
+	{
+		width: 100%;
 	}
 }
