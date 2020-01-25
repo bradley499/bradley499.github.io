@@ -149,8 +149,9 @@ textarea.inputArea {
 	{
 		width: 100%;
 	}
+}
+@media (max-width:427px) {
 	textarea.inputArea {
 		min-width: 93%;
 		max-width: 93%;
 	}
-}
