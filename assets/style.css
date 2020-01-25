@@ -7,10 +7,15 @@ div.banner {
 	padding-top:40px;
 	text-align: center;
 }
-img.bannerImg {
-	border-radius: 100%;
-	width: 200px;
-	height: 200px;
+div.bannerImg {
+	min-width: 200px;
+    min-height: 200px;
+    max-width: 200px;
+    max-height: 200px;
+    margin: 0px auto;
+    border-radius: 100%;
+    background-image: url("/assets/me.jpeg");
+    background-size: 200px 200px;
 	outline: none;
 }
 div.main {
