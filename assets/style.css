@@ -148,7 +148,6 @@ textarea.inputArea {
 		max-width: 97%;
 	}
 }
-
 @media (max-width:724px) {
 	table.displayTableInline
 	{
@@ -160,3 +159,4 @@ textarea.inputArea {
 		min-width: 93%;
 		max-width: 93%;
 	}
+}
