@@ -57,7 +57,7 @@ ul.navigation {
 	padding-left: 0px;
 }
 ul.navigation > li {
-	margin: 4px 0px;
+	margin: 6px 0px;
 }
 ul.navigation > li > a {
 	text-decoration: none;
@@ -130,6 +130,35 @@ textarea.inputArea {
 	max-height: 500px;
 	margin-top: 3px;
 	font-family: arial;
+}
+.updateMessage {
+	border: 1px solid gray;
+	border-radius: 10px;
+	padding: 5px 10px;
+}
+.updateMessageTime {
+	text-align: right;
+	width: 100%;
+	display: inline-block;
+	font-size: smaller;
+	color: #8f8f8f;
+}
+.spinner {
+    margin: 0 auto;
+    height: 12px;
+    width: 12px;
+    animation: rotate 0.8s infinite linear;
+    border: 3px solid #8f8f8f;
+    border-right-color: transparent;
+    border-radius: 50%;
+}
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
 }
 @media (max-width:992px) {
 	div.main, div.panel {
