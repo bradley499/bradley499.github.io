@@ -45,6 +45,7 @@ if (window.location.pathname.startsWith("/updates/") || window.location.pathname
 	}
 	else
 	{
+		tag = tag.substr(5);
 		uid = null;
 	}
 	var imported = document.createElement('script');
