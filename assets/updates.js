@@ -36,7 +36,7 @@ function loadUpdates(uid=null,tag=null) {
 		return false;
 	}
 	var request = new XMLHttpRequest();
-	request.open('GET', 'updates.json', true);
+	request.open('GET', '/updates.json', true);
 	request.onreadystatechange = function() {
 		var data = []
 		if (this.readyState === 4) {

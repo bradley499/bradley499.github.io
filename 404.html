@@ -48,9 +48,11 @@ if (window.location.pathname.startsWith("/updates/") || window.location.pathname
 		uid = null;
 	}
 	var imported = document.createElement('script');
+	imported.onload = function () {
+		loadUpdates(uid,tag);
+	};
 	imported.src = '/assets/updates.js';
 	document.head.appendChild(imported);
-	loadUpdates(uid,tag);
 }
 </script>
 				</div>
