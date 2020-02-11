@@ -232,7 +232,7 @@ function attachmentSelection(event) {
 		}
 	}
 	if (["pdf","document","presentation","spreadsheet","null"].includes(validFileFormat)) {
-		window.open(previewFile[0], "_blank");
+		window.open("/" + previewFile[0], "_blank");
 		return true;
 	}
 	showDisplayElement(true,validFileFormat,previewFile[0],previewFile[1]);
