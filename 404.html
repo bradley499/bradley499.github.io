@@ -4,7 +4,7 @@
 		<title>404 ~ Bradley Marshall</title>
 		<meta name="robots" content="noindex" />
 		<meta name="viewport" content="width=device-width, user-scalable=no">
-		<link rel="stylesheet" type="text/css" href="assets/style.css">
+		<link rel="stylesheet" type="text/css" href="/assets/style.css">
 		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-157001746-1"></script>
 		<script>
 			window.dataLayer = window.dataLayer || [];
@@ -21,10 +21,35 @@
 		</div>
 		<div div="content">
 			<div class="main">
-				<div class="mainContent">
+				<div class="mainContent" id="mainContentDelivery">
 					<h1>404 - not found!</h1>
 					<p>Oh dear... Somehow you've gotten very lost.</p>
 					<p><a href="/" class="linkBlank">Click here to go </a><a href="/" class="link">home</a><a href="/" class="linkBlank">.</a></p>
+					<script type="text/javascript">
+if (window.location.pathname.startsWith("updates/") || window.location.pathname.startsWith("updates/tags/")){
+	document.getElementById("mainContentDelivery").innerHTML = "<div id=\"updateContent\"><br><br><div class=\"spinner\" title=\"Loading blog post updates...\"></div><br><br></div>";
+	document.title = "Blog ~ Bradley Marshall";
+	var uid = window.location.pathname.substr(8);
+	var tag = uid;
+	if (!window.location.pathname.startsWith("updates/tags/")) {
+		if ((!uid || /^\s*$/.test(uid))) {
+			if (parseInt(uid).toString()===uid){
+				uid = parseInt(uid);
+			} else {
+				uid = -1;
+			}
+		} else {
+			uid = -1;
+		}
+		tag = null;
+	}
+	else
+	{
+		uid = null;
+	}
+	loadUpdates(uid,tag);
+}
+</script>
 				</div>
 			</div>
 			<div class="panel">
