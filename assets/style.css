@@ -198,7 +198,7 @@ p.updateMessageAttachmentDisplayAltText {
 	margin-top: 8px;
 	margin-bottom: 16px;
 }
-div.updateMessageAttachmentImage, div.updateMessageAttachmentVideoRender, div.updateMessageAttachmentMore {
+div.updateMessageAttachmentImage, div.updatemessageattachmentaudio, div.updateMessageAttachmentVideo, div.updateMessageAttachmentVideoRender, div.updateMessageAttachmentPdf, div.updateMessageAttachmentMore {
 	display: inline-block;
 	width: 100%;
 	height: 400px;
@@ -405,7 +405,7 @@ div.spinner {
 	}
 }
 @media (max-width: 1200px){
-	div.updateMessageAttachmentsContainer, div.updateMessageAttachmentImage, div.updateMessageAttachmentMore {
+	div.updateMessageAttachmentImage, div.updatemessageattachmentaudio, div.updateMessageAttachmentVideo, div.updateMessageAttachmentVideoRender, div.updateMessageAttachmentPdf, div.updateMessageAttachmentMore {
 		height: 200px;
 	}
 	div.OutOf4, div.is1OutOf4, div.is2OutOf4, div.is3OutOf4, div.is4OutOf4 {
