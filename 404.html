@@ -34,18 +34,12 @@ if (window.location.pathname.startsWith("/updates/") || window.location.pathname
 	var tag = uid;
 	if (!window.location.pathname.startsWith("/updates/tags/")) {
 		console.log(uid);
-		if ((!uid || /^\s*$/.test(uid))) {
-				console.log(uid);
-			if (parseInt(uid).toString()===uid){
-				uid = parseInt(uid);
-				console.log(uid);
-			} else {
-				uid = -1;
-				console.log(uid);
-			}
+		if (parseInt(uid).toString()===uid){
+			uid = parseInt(uid);
+			console.log(uid);
 		} else {
 			uid = -1;
-			console.log(uid,123);
+			console.log(uid);
 		}
 		tag = null;
 	}
