@@ -26,10 +26,10 @@
 					<p>Oh dear... Somehow you've gotten very lost.</p>
 					<p><a href="/" class="linkBlank">Click here to go </a><a href="/" class="link">home</a><a href="/" class="linkBlank">.</a></p>
 					<script type="text/javascript">
-if (window.location.pathname.startsWith("updates/") || window.location.pathname.startsWith("updates/tags/")){
+if (window.location.pathname.startsWith("/updates/") || window.location.pathname.startsWith("/updates/tags/")){
 	document.getElementById("mainContentDelivery").innerHTML = "<div id=\"updateContent\"><br><br><div class=\"spinner\" title=\"Loading blog post updates...\"></div><br><br></div>";
 	document.title = "Blog ~ Bradley Marshall";
-	var uid = window.location.pathname.substr(8);
+	var uid = window.location.pathname.substr(9);
 	var tag = uid;
 	if (!window.location.pathname.startsWith("updates/tags/")) {
 		if ((!uid || /^\s*$/.test(uid))) {
