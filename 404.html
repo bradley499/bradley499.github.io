@@ -30,16 +30,12 @@ if (window.location.pathname.startsWith("/updates/") || window.location.pathname
 	document.getElementById("mainContentDelivery").innerHTML = "<div id=\"updateContent\"><br><br><div class=\"spinner\" title=\"Loading blog post updates...\"></div><br><br></div>";
 	document.title = "Blog ~ Bradley Marshall";
 	var uid = window.location.pathname.substr(9);
-	console.log(uid);
 	var tag = uid;
 	if (!window.location.pathname.startsWith("/updates/tags/")) {
-		console.log(uid);
 		if (parseInt(uid).toString()===uid){
 			uid = parseInt(uid);
-			console.log(uid);
 		} else {
 			uid = -1;
-			console.log(uid);
 		}
 		tag = null;
 	}

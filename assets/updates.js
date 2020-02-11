@@ -302,7 +302,7 @@ function showDisplayElement(show=true,type=null,reference=null,alt=null) {
 		var contentDisplay = "?";
 		switch(type) {
 			case "image":
-				contentDisplay = "<img src=\"" + encodeURIComponent(reference) + "\" class=\"displayAttachmentSizing ignore\">";
+				contentDisplay = "<img src=\"/" + encodeURIComponent(reference) + "\" class=\"displayAttachmentSizing ignore\">";
 				break
 			case "video":
 				fileType = reference.substr(reference.lastIndexOf(".") + 1);
@@ -315,7 +315,7 @@ function showDisplayElement(show=true,type=null,reference=null,alt=null) {
 				if (validFileFormat == null) {
 					break;
 				}
-				contentDisplay = "<video controls autoplay=\"true\" class=\"displayAttachmentSizing displayAttachmentVideo ignore\"><source src=\"" + encodeURIComponent(reference) + "\" type=\"video/" + fileType + "\">Your browser does not support the video.</video>";
+				contentDisplay = "<video controls autoplay=\"true\" class=\"displayAttachmentSizing displayAttachmentVideo ignore\"><source src=\"/" + encodeURIComponent(reference) + "\" type=\"video/" + fileType + "\">Your browser does not support the video.</video>";
 				break
 			case "audio":
 				fileType = reference.substr(reference.lastIndexOf(".") + 1);
@@ -328,7 +328,7 @@ function showDisplayElement(show=true,type=null,reference=null,alt=null) {
 				if (validFileFormat == null) {
 					break;
 				}
-				contentDisplay = "<audio controls autoplay=\"true\" class=\"displayAttachmentSizing ignore\"><source src=\"" + encodeURIComponent(reference) + "\" type=\"audio/" + fileType + "\">Your browser does not support the video.</audio>";
+				contentDisplay = "<audio controls autoplay=\"true\" class=\"displayAttachmentSizing ignore\"><source src=\"/" + encodeURIComponent(reference) + "\" type=\"audio/" + fileType + "\">Your browser does not support the video.</audio>";
 				break
 		}
 		display.innerHTML = "<div style=\"overflow-x:hidden;overflow-y:auto;max-height:95vh;padding:2.5vh 0\"><div><table id=\"displayAttachmentTableContainer\"><tr align=\"center\" valign=\"middle\"><td>" + contentDisplay + "</td></tr><tr><td valign=\"top\"><div class=\"displayAttachmentSizing ignore\"><p class=\"ignore\">" + alt.replace(/[\u00A0-\u9999<>\&]/gim, function(i) {return '&#'+i.charCodeAt(0)+';'}).split("\n").join("</p><p class=\"ignore\">") + "</p></div></td></tr></table></div></div>"
