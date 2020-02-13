@@ -54,8 +54,9 @@ function loadUpdates(uid,tag) {
 			try {
 				if (res_data[1]["items"].length > 0) {
 					git_repos = res_data[1]["items"].length;
+					console.log("git");
 					for (var i = res_data[1]["items"].length - 1; i >= 0; i--) {
-						res_data[0].push([res_data[1]["items"][i]["name"],"Bradley created a new repository called \"" + res_data[1]["items"][i]["name"] + "\" on GitHub.\n" + res_data[1]["items"][i]["description"],[],["GitHub"],Date.parse(res_data[1]["items"][i]["created_at"])/1000,true]);
+						res_data[0].push([res_data[1]["items"][i]["name"],"Bradley created a new repository called \"" + res_data[1]["items"][i]["name"] + "\" on GitHub.\n" + res_data[1]["items"][i]["description"] + "\nTake a look at it on GitHub at: [" + res_data[1]["items"][i]["html_url"] + "](" + res_data[1]["items"][i]["html_url"] + " \"View " + res_data[1]["items"][i]["name"] + " on GitHub\")",[],["GitHub"],Date.parse(res_data[1]["items"][i]["created_at"])/1000,true]);
 					}
 					res_data[0] = res_data[0].sort(function(a,b) {
 						return a[4] - b[4];
