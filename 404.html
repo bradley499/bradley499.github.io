@@ -16,7 +16,7 @@
 	<body>
 		<div class="banner">
 			<a href="/"><div class="bannerImg"></div></a>
-			<h1>Bradley Marshall</h1>
+			<h1 id="name">Bradley Marshall</h1>
 			<p class="about">Where design and simplicity meets functionality...</p>
 		</div>
 		<div div="content">
@@ -29,6 +29,7 @@
 if (window.location.pathname.startsWith("/updates/") || window.location.pathname.startsWith("/updates/tags/")){
 	document.getElementById("mainContentDelivery").innerHTML = "<div id=\"updateContent\"><br><br><div class=\"spinner\" title=\"Loading blog post updates...\"></div><br><br></div>";
 	document.title = "Blog ~ Bradley Marshall";
+	
 	var uid = window.location.pathname.substr(9);
 	var tag = uid;
 	if (!window.location.pathname.startsWith("/updates/tags/")) {
