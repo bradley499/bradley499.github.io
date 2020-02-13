@@ -26,6 +26,11 @@
 					<p>Oh dear... Somehow you've gotten very lost.</p>
 					<p><a href="/" class="linkBlank">Click here to go </a><a href="/" class="link">home</a><a href="/" class="linkBlank">.</a></p>
 					<script type="text/javascript">
+if (!String.prototype.startsWith) {
+    String.prototype.startsWith = function(searchString, position){
+      return this.substr(position || 0, searchString.length) === searchString;
+  };
+}
 if (window.location.pathname.startsWith("/updates/") || window.location.pathname.startsWith("/updates/tags/")){
 	document.getElementById("mainContentDelivery").innerHTML = "<div id=\"updateContent\"><br><br><div class=\"spinner\" title=\"Loading blog post updates...\"></div><br><br></div>";
 	document.title = "Blog ~ Bradley Marshall";
