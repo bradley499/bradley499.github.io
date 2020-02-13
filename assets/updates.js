@@ -61,14 +61,14 @@ function loadUpdates(uid,tag) {
 						return a[4] - b[4];
 					});
 				}
-			} catch {}
+			} catch() {}
 			res_data = res_data[0];
 			x = 0
 			while (x < 3){
 				x+=1
 				try {
 					document.getElementById("updateContent").innerHTML = buildUpdates(res_data,uid,tag,git_repos);
-				} catch {
+				} catch() {
 					window.setTimeout(function(){document.getElementById("updateContent").innerHTML = buildUpdates(res_data,uid,tag,git_repos)},100);
 				}
 				if (uid != null) {
@@ -97,7 +97,7 @@ function getUrl(url,callback){
 				if (this.status >= 200 && this.status < 400) {
 					try {
 						data = JSON.parse(this.responseText);
-					} catch {}
+					} catch() {}
 				}
 				callback.apply(this,[data]);
 			}
@@ -106,7 +106,7 @@ function getUrl(url,callback){
 			callback.apply(this,[[]]);
 		}
 		request.send();
-	} catch {}
+	} catch() {}
 	request = null;
 }
 
@@ -330,7 +330,7 @@ function attachmentSelection(event) {
 	{
 		var previewFile = [event.target.getAttribute("data-file"),event.target.getAttribute("alt")];
 		event.preventDefault();		
-	} catch {return false;}
+	} catch() {return false;}
 	fileType = previewFile[0].substr(previewFile[0].lastIndexOf(".") + 1);
 	validFileFormat = "null";
 	for (var iii = attachmentFormats.length - 1; iii >= 0; iii--) {
@@ -348,7 +348,7 @@ function attachmentSelection(event) {
 function previewViewMore(event) {
 	try {
 		window.location.href = "/updates/" + event.target.getAttribute("post-parent-id");
-	} catch {}
+	} catch() {}
 }
 
 function showDisplayElement(show,type,reference,alt) {
@@ -374,7 +374,7 @@ function showDisplayElement(show,type,reference,alt) {
 			{
 				break;
 			}
-		} catch {
+		} catch() {
 			if (show) {
 				document.body.innerHTML += "<div id=\"displayAttachmentOverlay\"></div>";
 			}
