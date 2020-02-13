@@ -47,14 +47,13 @@ function loadUpdates(uid,tag) {
 	var timeout = 30;
 	var git_repos = 0;
 	function renderUpdates(uid=null,tag=null){
-		if (res_data[0] == false || (res_data[1] == false && typeof(res_data[1]) != "object")) {
+		if ((res_data[0] == false && typeof(res_data[0]) != "object") || (res_data[1] == false && typeof(res_data[1]) != "object")) {
 			window.setTimeout(function(){renderUpdates(uid,tag)},10);
 			return false;
 		} else {
 			try {
 				if (res_data[1]["items"].length > 0) {
 					git_repos = res_data[1]["items"].length;
-					console.log("git");
 					for (var i = res_data[1]["items"].length - 1; i >= 0; i--) {
 						res_data[0].push([res_data[1]["items"][i]["name"],"Bradley created a new repository called \"" + res_data[1]["items"][i]["name"] + "\" on GitHub.\n" + res_data[1]["items"][i]["description"] + "\nTake a look at it on GitHub at: [" + res_data[1]["items"][i]["html_url"] + "](" + res_data[1]["items"][i]["html_url"] + " \"View " + res_data[1]["items"][i]["name"] + " on GitHub\")",[],["GitHub"],Date.parse(res_data[1]["items"][i]["created_at"])/1000,true]);
 					}
@@ -264,7 +263,7 @@ function buildUpdates(data, uid, tag, git_repos) {
 		{
 			return "<p>Nothing to show yet, come back soon to find more...</p>";
 		}
-	} catch(err) {throw undefined;}
+	} catch(err) {throw "reload exception";}
 }
 
 function convert(unixtimestamp){
