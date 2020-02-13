@@ -46,7 +46,7 @@ function loadUpdates(uid,tag) {
 	}
 	var timeout = 30;
 	var git_repos = 0;
-	function renderUpdates(uid=null,tag=null){
+	function renderUpdates(uid,tag){
 		if ((res_data[0] == false && typeof(res_data[0]) != "object") || (res_data[1] == false && typeof(res_data[1]) != "object")) {
 			window.setTimeout(function(){renderUpdates(uid,tag)},10);
 			return false;
