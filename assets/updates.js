@@ -303,7 +303,7 @@ function parseMd(md, isFirst){
 	md = md.replace(/^(.+)\n\=+/gm, "<h1 class=\"noTop\">$1</h1>");
 	md = md.replace(/^(.+)\n\-+/gm, "<h2 class=\"noTop\">$1</h2>");
 	//links
-	md = md.replace(/[\[]{1}([^\]]+)[\]]{1}[\(]{1}([^\)\"]+)(\"(.+)\")?[\)]{1}/g, "<a href=\"$2\" title=\"$4\">$1</a>");
+	md = md.replace(/\[(.*?)\]\((.*?)\)/gi, "<a href=\"$2\" class=\"link\">$1</a>");
 	//font styles
 	md = md.replace(/[\*\_]{2}([^\*\_]+)[\*\_]{2}/g, "<b>$1</b>");
 	md = md.replace(/[\*\_]{1}([^\*\_]+)[\*\_]{1}/g, "<i>$1</i>");
