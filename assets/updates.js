@@ -338,7 +338,7 @@ function attachmentSelection(event) {
 			validFileFormat = attachmentFormats[iii][1];
 		}
 	}
-	if (["pdf","document","presentation","spreadsheet","null"].includes(validFileFormat)) {
+	if (["pdf","document","presentation","spreadsheet","null"].indexOf(validFileFormat) >= 0) {
 		window.open("/" + previewFile[0], "_blank");
 		return true;
 	}
@@ -473,7 +473,7 @@ function refreshTriggers(){
 	}
 }
 
-if (["/updates","/updates.html"].includes(window.location.pathname)){
+if (["/updates","/updates.html"].indexOf(window.location.pathname) >= 0){
 	window.addEventListener("load", loadUpdates(null,null));
 }
 document.onkeydown = function(evt) {
