@@ -366,11 +366,6 @@ function showDisplayElement(show,type,reference,alt) {
 	if (show === undefined){
 		show = true;
 	}
-	if (show){
-		if (window.navigator.userAgent.indexOf("MSIE ") > 0) {
-			window.open(reference,"_blank");
-		};
-	}
 	type = type || null;
 	reference = reference || null;
 	alt = alt || null;
