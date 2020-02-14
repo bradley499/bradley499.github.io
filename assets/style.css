@@ -82,7 +82,10 @@ li > ul {
 	padding-top: 0px;
 }
 .borderNo {
-	border: unset !important;
+	border: 0px !important;
+}
+.displayBlockOveride {
+	display: block !important;
 }
 table.formTableAlignment {
 	width: 100%;
@@ -155,13 +158,13 @@ h2.updateMessageTitle {
 	font-size: xx-large;
 }
 h2.updateMessageShowLinkborderNo:hover::after {
-	content: unset !important;
+	content: none !important;
 	margin: 0;
 	padding: 0;
-	background-image: unset !important;
+	background-image: none !important;
 }
 h2.noAfterContent::after {
-	content: unset !important;
+	content: none !important;
 }
 h2.updateMessageTitle:hover::after {
 	content: "  ";
@@ -174,11 +177,11 @@ h2.updateMessageTitle:hover::after {
 	background-position: center;
 }
 div.updateMessageAttachmentsContainerShowAll {
-	height: unset !important;
+	height: auto !important;
 	width: 100%;
 }
 div.updateMessageAttachmentsContainerResults {
-	height: unset !important;
+	height: auto !important;
 }
 div.updateMessageAttachmentsContainerBase {
 	text-align: center;
@@ -280,14 +283,8 @@ div.OutOf4 {
 div.is1OutOf4, div.is2OutOf4, div.is3OutOf4, div.is4OutOf4 {
 	max-height: 200px !important;
 }
-div.updateMessageAttachmentImage {
-	background-image: var(--data-image-src);
-}
 div.updateMessageAttachmentVideo {
 	background-image: url('data:image/png;base64,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');
-}
-div.updateMessageAttachmentVideoRender {
-	background-image: var(--data-image-src) !important;
 }
 div.updateMessageAttachmentPdf, div.updateMessageAttachmentDocument, div.updateMessageAttachmentPresentation, div.updateMessageAttachmentSpreadsheet, div.updateMessageAttachmentUnknown, div.updateMessageAttachmentAudio, div.updateMessageAttachmentVideo {
 	background-size: auto;
@@ -345,6 +342,7 @@ a.updateMessageLink {
 	text-decoration: none;
 }
 div#displayAttachmentOverlay {
+	background-color: #000000;
 	background-color: rgb(0,0,0,0.85);
 	display: block;
 	position: fixed;

@@ -29,6 +29,7 @@ var attachmentFormats = [
 	[null,"null"]
 ];
 var errorDocument = "<h1>404 - not found!</h1><p>Oh dear... Somehow you've gotten very lost.</p><p><a href=\"/\" class=\"linkBlank\">Click here to go </a><a href=\"/\" class=\"link\">home</a><a href=\"/\" class=\"linkBlank\">.</a></p>";
+var isIE = window.navigator.userAgent.indexOf("MSIE ") > 0 || !!navigator.userAgent.match(/Trident.*rv\:11\./);
 
 var res_data = [false,false];
 function loadUpdates(uid,tag) {
@@ -77,6 +78,12 @@ function loadUpdates(uid,tag) {
 						el.item(i).outerHTML = el.item(i).innerHTML;
 					}
 				}
+				if (isIE) {
+					var el = document.getElementsByClassName("updateMessageAttachmentsResults");
+					for (var i=0; i < el.length; i++) {
+						el.item(i).classList.add("displayBlockOveride");
+					}
+				} 
 			}
 			refreshTriggers();
 		}
@@ -157,9 +164,9 @@ function buildUpdates(data, uid, tag, git_repos) {
 				}
 				attachmentsCollection = [];
 				attachmentFormatsDisplay = {
-					"image": "<div class=\"updateMessageAttachmentImage updateMessageAttachmentPreviewThumbnail {{positionalMax}}\" style=\"--data-image-src: url('/assets/posts/{{fileName}}')\" data-file=\"assets/posts/{{fileName}}\" alt=\"{{alt}}\" title=\"{{alt}}\"></div>",
-					"video": "<div class=\"updateMessageAttachmentVideo{{validThumb}} updateMessageAttachmentPreviewThumbnail {{positionalMax}}\" style=\"--data-image-src: url('/assets/posts/{{fileNameThumb}}')\" data-file=\"assets/posts/{{fileName}}\" alt=\"{{alt}}\" title=\"{{alt}}\"></div>",
-					"audio": "<div class=\"updateMessageAttachmentAudio updateMessageAttachmentPreviewThumbnail {{positionalMax}}\" style=\"--data-image-src: url('/assets/posts/{{fileName}}')\" data-file=\"assets/posts/{{fileName}}\" alt=\"{{alt}}\" title=\"{{alt}}\"></div>",
+					"image": "<div class=\"updateMessageAttachmentImage updateMessageAttachmentPreviewThumbnail {{positionalMax}}\" style=\"background-image: url('/assets/posts/{{fileName}}')\" data-file=\"assets/posts/{{fileName}}\" alt=\"{{alt}}\" title=\"{{alt}}\"></div>",
+					"video": "<div class=\"updateMessageAttachmentVideo{{validThumb}} updateMessageAttachmentPreviewThumbnail {{positionalMax}}\" style=\"background-image: url('/assets/posts/{{fileNameThumb}}')\" data-file=\"assets/posts/{{fileName}}\" alt=\"{{alt}}\" title=\"{{alt}}\"></div>",
+					"audio": "<div class=\"updateMessageAttachmentAudio updateMessageAttachmentPreviewThumbnail {{positionalMax}}\" style=\"background-image: url('/assets/posts/{{fileName}}')\" data-file=\"assets/posts/{{fileName}}\" alt=\"{{alt}}\" title=\"{{alt}}\"></div>",
 					"pdf": "<div class=\"updateMessageAttachmentPdf updateMessageAttachmentPreviewThumbnail {{positionalMax}}\" data-file=\"assets/posts/{{fileName}}\" alt=\"{{alt}}\" title=\"{{alt}}\"></div>",
 					"document": "<div class=\"updateMessageAttachmentDocument updateMessageAttachmentPreviewThumbnail {{positionalMax}}\" data-file=\"assets/posts/{{fileName}}\" alt=\"{{alt}}\" title=\"{{alt}}\"></div>",
 					"Spreadsheet": "<div class=\"updateMessageAttachmentSpreadsheet updateMessageAttachmentPreviewThumbnail {{positionalMax}}\" data-file=\"assets/posts/{{fileName}}\" alt=\"{{alt}}\" title=\"{{alt}}\"></div>",
@@ -187,7 +194,7 @@ function buildUpdates(data, uid, tag, git_repos) {
 					} else {
 						attachmentBuild = attachmentBuild.replace("{{attachmentPreview}}",attachmentFormatsDisplay[validFileFormat].split("{{fileName}}").join(data[i][2][ii][0]));
 					}
-					if (!uid_match) {
+					if (!uid_match && !isIE) {
 						if (ii == 2 || data[i][2].length <= 4) {
 							attachmentBuild = attachmentBuild.replace("{{positional}}","is" + (ii + 1).toString() + "OutOf" + Math.min(data[i][2].length,4));
 							attachmentBuild = attachmentBuild.replace("{{positionalMax}}","OutOf" + Math.min(data[i][2].length,4));
@@ -205,7 +212,7 @@ function buildUpdates(data, uid, tag, git_repos) {
 					}
 					attachmentBuild = attachmentBuild.split("{{alt}}").join(data[i][2][ii][1].split("&").join("&amp;").split("\"").join("&quot;").split("'").join("&#39;").split("<").join("&lt;").split(">").join("&gt;").split("{").join("&#123;").split("}").join("&#125;"));
 					attachmentsCollection.push(attachmentBuild);
-					if (!uid_match) {
+					if (!uid_match && !isIE) {
 						if (ii == 2 && data[i][2].length > 4) {
 							attachmentsCollection.push(attachment.replace("{{attachmentPreview}}",attachmentFormatsDisplay["more"].replace("updateMessageAttachmentMoreIfSmall","")).replace("{{positional}}","is4OutOf4"));
 							break;
@@ -239,7 +246,11 @@ function buildUpdates(data, uid, tag, git_repos) {
 					updateBaseBuild = updateBaseBuild.replace("{{isLinkable}}","noAfterContent");
 				}
 				updateBaseBuild = updateBaseBuild.split("{{uid}}").join(base);
-				if (uid_match) {
+				if (isIE){
+					updateBaseBuild = updateBaseBuild.split("updateMessageAttachments{{isResultsPageShow}}").join("updateMessageAttachmentsResults");
+					updateBaseBuild = updateBaseBuild.split("{{isResultsPage}}").join("");
+				}
+				if (uid_match || isIE) {
 					updateBaseBuild = updateBaseBuild.replace("{{containerBaseOveride}}","updateMessageAttachmentsContainerShowAll").split("{{isResultsPage}}").join("borderNo").split("{{isResultsPageShow}}").join("Results");
 				} else {
 					updateBaseBuild = updateBaseBuild.replace("{{containerBaseOveride}}","").split("{{isResultsPage}}").join("").split("{{isResultsPageShow}}").join("");
@@ -263,7 +274,7 @@ function buildUpdates(data, uid, tag, git_repos) {
 		{
 			return "<p>Nothing to show yet, come back soon to find more...</p>";
 		}
-	} catch(err) {throw "reload exception";}
+	} catch(err) {throw err;}//throw "reload exception";}
 }
 
 function convert(unixtimestamp){
@@ -323,7 +334,7 @@ function parseMd(md, isFirst){
 }
 
 function attachmentSelection(event) {
-	if (event == undefined || !event.target.matches(".updateMessageAttachmentPreviewThumbnail")) {
+	if (event == undefined || Array.from(event.target.classList).indexOf("updateMessageAttachmentPreviewThumbnail") < 0) {
 		return false;
 	}
 	try
@@ -354,6 +365,11 @@ function previewViewMore(event) {
 function showDisplayElement(show,type,reference,alt) {
 	if (show === undefined){
 		show = true;
+	}
+	if (show){
+		if (window.navigator.userAgent.indexOf("MSIE ") > 0) {
+			window.open(reference,"_blank");
+		};
 	}
 	type = type || null;
 	reference = reference || null;
@@ -488,3 +504,80 @@ document.onkeydown = function(evt) {
     	hideDisplayElement();
     }
 };
+if (!Array.from) {
+	Array.from = (function () {
+	  var toStr = Object.prototype.toString;
+	  var isCallable = function (fn) {
+		return typeof fn === 'function' || toStr.call(fn) === '[object Function]';
+	  };
+	  var toInteger = function (value) {
+		var number = Number(value);
+		if (isNaN(number)) { return 0; }
+		if (number === 0 || !isFinite(number)) { return number; }
+		return (number > 0 ? 1 : -1) * Math.floor(Math.abs(number));
+	  };
+	  var maxSafeInteger = Math.pow(2, 53) - 1;
+	  var toLength = function (value) {
+		var len = toInteger(value);
+		return Math.min(Math.max(len, 0), maxSafeInteger);
+	  };
+  
+	  // The length property of the from method is 1.
+	  return function from(arrayLike/*, mapFn, thisArg */) {
+		// 1. Let C be the this value.
+		var C = this;
+  
+		// 2. Let items be ToObject(arrayLike).
+		var items = Object(arrayLike);
+  
+		// 3. ReturnIfAbrupt(items).
+		if (arrayLike == null) {
+		  throw new TypeError('Array.from requires an array-like object - not null or undefined');
+		}
+  
+		// 4. If mapfn is undefined, then let mapping be false.
+		var mapFn = arguments.length > 1 ? arguments[1] : void undefined;
+		var T;
+		if (typeof mapFn !== 'undefined') {
+		  // 5. else
+		  // 5. a If IsCallable(mapfn) is false, throw a TypeError exception.
+		  if (!isCallable(mapFn)) {
+			throw new TypeError('Array.from: when provided, the second argument must be a function');
+		  }
+  
+		  // 5. b. If thisArg was supplied, let T be thisArg; else let T be undefined.
+		  if (arguments.length > 2) {
+			T = arguments[2];
+		  }
+		}
+  
+		// 10. Let lenValue be Get(items, "length").
+		// 11. Let len be ToLength(lenValue).
+		var len = toLength(items.length);
+  
+		// 13. If IsConstructor(C) is true, then
+		// 13. a. Let A be the result of calling the [[Construct]] internal method 
+		// of C with an argument list containing the single item len.
+		// 14. a. Else, Let A be ArrayCreate(len).
+		var A = isCallable(C) ? Object(new C(len)) : new Array(len);
+  
+		// 16. Let k be 0.
+		var k = 0;
+		// 17. Repeat, while k < len… (also steps a - h)
+		var kValue;
+		while (k < len) {
+		  kValue = items[k];
+		  if (mapFn) {
+			A[k] = typeof T === 'undefined' ? mapFn(kValue, k) : mapFn.call(T, kValue, k);
+		  } else {
+			A[k] = kValue;
+		  }
+		  k += 1;
+		}
+		// 18. Let putStatus be Put(A, "length", len, true).
+		A.length = len;
+		// 20. Return A.
+		return A;
+	  };
+	}());
+  }
