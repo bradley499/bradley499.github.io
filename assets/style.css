@@ -99,6 +99,7 @@ table.formTableAlignment {
 table.displayTableInline {
 	float: left;
 	min-width: 50%;
+	max-width: 50%;
 }
 td.itemHold
 {
@@ -409,7 +410,19 @@ div.spinner {
         transform: rotate(360deg);
     }
 }
-@media (max-width:992px), not all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+	div.main {
+		max-width: 60vw !important;
+		min-width: 60vw !important;
+		margin: 2vw 2vw 2vw 6vw !important;
+	}
+	div.panel {
+		width: 7vw !important;
+		max-width: 60vw !important;
+		margin: 2vw 6vw 2vw 0px !important;
+	}
+}
+@media (max-width:992px) {
 	div.main, div.panel {
 		max-width: 80vw;
 		min-width: 80vw;
@@ -419,14 +432,13 @@ div.spinner {
 		display: none;
 	}
 	.itemHold {
-		width: 60px !important;
 	}
 	textarea.inputArea {
 		min-width: 97%;
 		max-width: 97%;
 	}
 }
-@media (max-width: 1200px), not all and (-ms-high-contrast: none), (-ms-high-contrast: active){
+@media (max-width: 1200px) {
 	div.updateMessageAttachmentImage, div.updatemessageattachmentaudio, div.updateMessageAttachmentVideo, div.updateMessageAttachmentVideoRender, div.updateMessageAttachmentPdf, div.updateMessageAttachmentMore, div.updateMessageAttachmentsContainer {
 		height: 200px;
 	}
@@ -434,13 +446,14 @@ div.spinner {
 		height: 100px !important;
 	}
 }
-@media (max-width:724px), not all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+@media (max-width:724px) {
 	table.displayTableInline
 	{
 		width: 100%;
+		max-width: none;
 	}
 }
-@media (max-width:427px), not all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+@media (max-width:427px) {
 	textarea.inputArea {
 		min-width: 93%;
 		max-width: 93%;
