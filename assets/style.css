@@ -411,15 +411,10 @@ div.spinner {
     }
 }
 @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
-	div.main {
-		max-width: 60vw !important;
-		min-width: 60vw !important;
-		margin: 2vw 2vw 2vw 6vw !important;
-	}
-	div.panel {
-		width: 7vw !important;
-		max-width: 60vw !important;
-		margin: 2vw 6vw 2vw 0px !important;
+	div.main, div.panel {
+		max-width: 80vw !important;
+		min-width: 80vw !important;
+		margin: 2vw 4vw !important;
 	}
 }
 @media (max-width:992px) {
