@@ -414,7 +414,9 @@ div.spinner {
 	div.main, div.panel {
 		max-width: 80vw !important;
 		min-width: 80vw !important;
-		margin: 2vw 4vw !important;
+		margin: 1vw 4vw !important;
+		display: block !important;
+		float: none !important;
 	}
 }
 @media (max-width:992px) {
