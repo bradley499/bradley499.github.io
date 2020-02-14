@@ -65,6 +65,11 @@ ul.navigation > li > a {
 }
 a.link, a.linkBlank {
 	text-decoration: none;
+	word-break: break-word;
+}
+span.link {
+	color: #0000ee;
+	cursor: pointer;
 }
 a.linkBlank {
 	color: #000000;
@@ -291,6 +296,21 @@ div.updateMessageAttachmentPdf, div.updateMessageAttachmentDocument, div.updateM
 	background-repeat: no-repeat;
 	background-position: center;
 	background-color: lightgray;
+	background-blend-mode: overlay;
+	transition: * 2.25s;
+	-moz-transition: * 2.25s;
+	-ms-transition: * 2.25s;
+	-o-transition: * 2.25s;
+	-webkit-transition: * 2.25s;
+}
+div.updateMessageAttachmentPdf:hover, div.updateMessageAttachmentDocument, div.updateMessageAttachmentPresentation, div.updateMessageAttachmentSpreadsheet, div.updateMessageAttachmentUnknown, div.updateMessageAttachmentAudio, div.updateMessageAttachmentVideo:hover, div.updateMessageAttachmentMore:hover {
+	background-blend-mode: color-burn;
+	background-color: gray;
+	transition: background-color .63s;
+	-moz-transition: background-color .63s;
+	-ms-transition: background-color .63s;
+	-o-transition: background-color .63s;
+	-webkit-transition: background-color .63s;
 }
 div.updateMessageAttachmentPdf {
 	background-image: url('data:image/png;base64,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');
@@ -317,14 +337,9 @@ div.updateMessageAttachmentMore {
 	background-origin: content-box;
 	background-size: 100px;
 	background-repeat: no-repeat;
-	transition: background-color .25s;
-	-moz-transition: background-color .25s;
-	-ms-transition: background-color .25s;
-	-o-transition: background-color .25s;
-	-webkit-transition: background-color .25s;
+
 }
 div.updateMessageAttachmentMore:hover {
-	background-color: gray;
 	background-blend-mode: color-dodge;
 }
 div.updateMessageTagsContainer {
@@ -394,7 +409,7 @@ div.spinner {
         transform: rotate(360deg);
     }
 }
-@media (max-width:992px) {
+@media (max-width:992px), not all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
 	div.main, div.panel {
 		max-width: 80vw;
 		min-width: 80vw;
@@ -411,7 +426,7 @@ div.spinner {
 		max-width: 97%;
 	}
 }
-@media (max-width: 1200px){
+@media (max-width: 1200px), not all and (-ms-high-contrast: none), (-ms-high-contrast: active){
 	div.updateMessageAttachmentImage, div.updatemessageattachmentaudio, div.updateMessageAttachmentVideo, div.updateMessageAttachmentVideoRender, div.updateMessageAttachmentPdf, div.updateMessageAttachmentMore, div.updateMessageAttachmentsContainer {
 		height: 200px;
 	}
@@ -419,18 +434,21 @@ div.spinner {
 		height: 100px !important;
 	}
 }
-@media (max-width:724px) {
+@media (max-width:724px), not all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
 	table.displayTableInline
 	{
 		width: 100%;
 	}
 }
-@media (max-width:427px) {
+@media (max-width:427px), not all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
 	textarea.inputArea {
 		min-width: 93%;
 		max-width: 93%;
 	}
 	div.updateMessageAttachmentMore {
 		background-size: 70px
+	}
+	div.updateMessageAttachmentPreviewThumbnail, div.updateMessageAttachmentMore {
+		background-color: gray !important;
 	}
 }

@@ -45,9 +45,14 @@ function loadUpdates(uid,tag) {
 	} else {
 		res_data[1] = [true];
 	}
-	var timeout = 30;
+	var timeout = new Date(new Date().getTime() + 30000);
 	var git_repos = 0;
 	function renderUpdates(uid,tag){
+		if (new Date() > timeout){
+			if (document.getElementById("errorDisplay") == undefined){
+				document.getElementById("updateContent").innerHTML = "<div id=\"errorDisplay\"><h2>Slowly loading posts...</h2><p>It would appear that your browser is taking very long to responsed...</p><p><span id=\"clickToRefresh\">Click <span class=\"link\">here</span> to reload the page.</span></p></div>";
+			}
+		}
 		if ((res_data[0] == false && typeof(res_data[0]) != "object") || (res_data[1] == false && typeof(res_data[1]) != "object")) {
 			window.setTimeout(function(){renderUpdates(uid,tag)},10);
 			return false;
@@ -85,8 +90,8 @@ function loadUpdates(uid,tag) {
 					}
 				} 
 			}
-			refreshTriggers();
 		}
+		refreshTriggers();
 	}
 	renderUpdates(uid,tag);	
 };
@@ -189,7 +194,7 @@ function buildUpdates(data, uid, tag, git_repos) {
 						}
 						else
 						{
-							attachmentBuild = attachmentBuild.replace("{{attachmentPreview}}",attachmentFormatsDisplay[validFileFormat].replace("{{validThumb}}","").replace("style=\"--data-image-src: url('/assets/posts/{{fileNameThumb}}')\" ","").replace("{{fileName}}",data[i][2][ii][0]));
+							attachmentBuild = attachmentBuild.replace("{{attachmentPreview}}",attachmentFormatsDisplay[validFileFormat].replace("{{validThumb}}","").replace("style=\"background-image: url('/assets/posts/{{fileNameThumb}}')\" ","").replace("{{fileName}}",data[i][2][ii][0]));
 						}
 					} else {
 						attachmentBuild = attachmentBuild.replace("{{attachmentPreview}}",attachmentFormatsDisplay[validFileFormat].split("{{fileName}}").join(data[i][2][ii][0]));
@@ -293,42 +298,31 @@ function convert(unixtimestamp){
 function parseMd(md, isFirst){
 	md = md || "";
 	isFirst = isFirst || false;
-	//ul
 	md = md.replace(/^\s*\n\*/gm, "<ul>\n*");
 	md = md.replace(/^(\*.+)\s*\n([^\*])/gm, "$1\n</ul>\n\n$2");
 	md = md.replace(/^\*(.+)/gm, "<li>$1</li>");
-	//ol
 	md = md.replace(/^\s*\n\d\./gm, "<ol>\n1.");
 	md = md.replace(/^(\d\..+)\s*\n([^\d\.])/gm, "$1\n</ol>\n\n$2");
 	md = md.replace(/^\d\.(.+)/gm, "<li>$1</li>");
-	//blockquote
 	md = md.replace(/^\>(.+)/gm, "<blockquote>$1</blockquote>");
-	//h
 	md = md.replace(/[\#]{6}(.+)/g, "<h6 class=\"noTop\">$1</h6>");
 	md = md.replace(/[\#]{5}(.+)/g, "<h5 class=\"noTop\">$1</h5>");
 	md = md.replace(/[\#]{4}(.+)/g, "<h4 class=\"noTop\">$1</h4>");
 	md = md.replace(/[\#]{3}(.+)/g, "<h3 class=\"noTop\">$1</h3>");
 	md = md.replace(/[\#]{2}(.+)/g, "<h2 class=\"noTop\">$1</h2>");
 	md = md.replace(/[\#]{1}(.+)/g, "<h1 class=\"noTop\">$1</h1>");
-	//alt h
 	md = md.replace(/^(.+)\n\=+/gm, "<h1 class=\"noTop\">$1</h1>");
 	md = md.replace(/^(.+)\n\-+/gm, "<h2 class=\"noTop\">$1</h2>");
-	//links
-	md = md.replace(/\[(.*?)\]\((.*?)\)/gi, "<a href=\"$2\" class=\"link\">$1</a>");
-	//font styles
+	md = md.replace(/\[(.*?)\]\((.*?)\)/gi, "<a href=\"$2\" target=\"_blank\" class=\"link\">$1</a>");
 	md = md.replace(/[\*\_]{2}([^\*\_]+)[\*\_]{2}/g, "<b>$1</b>");
 	md = md.replace(/[\*\_]{1}([^\*\_]+)[\*\_]{1}/g, "<i>$1</i>");
 	md = md.replace(/[\~]{2}([^\~]+)[\~]{2}/g, '<del>$1</del>');
-	//pre
 	md = md.replace(/^\s*\n\`\`\`(([^\s]+))?/gm, "<pre class=\"$2\">");
 	md = md.replace(/^\`\`\`\s*\n/gm, "</pre>\n\n");
-	//code
 	md = md.replace(/[\`]{1}([^\`]+)[\`]{1}/g, "<code>$1</code>");
-	//p
 	md = md.replace(/^\s*(\n)?(.+)/gm, function(m){
 		return  /\<(\/)?(h\d|ul|ol|li|blockquote|pre|img)/.test(m) ? m : "<p class=\"updateMessageContent noTop\"\">"+m+"</p>";
 	});
-	//strip p from pre
 	md = md.replace(/(\<pre.+\>)\s*\n\<p\>(.+)\<\/p\>/gm, "$1$2");
 	return md;
 }
@@ -482,97 +476,78 @@ function refreshTriggers(){
 	for (var i = 0; i < el.length; i++) {
 		el.item(i).addEventListener("click",previewViewMore,true);
 	}
+	try {
+		document.getElementById("clickToRefresh").addEventListener("click",refresh,true);
+	} catch (err) {}
+}
+
+function refresh(){
+	location.reload();
 }
 
 if (["/updates","/updates.html"].indexOf(window.location.pathname) >= 0){
 	window.addEventListener("load", loadUpdates(null,null));
 }
 document.onkeydown = function(evt) {
-    evt = evt || window.event;
-    var isEscape = false;
-    if ("key" in evt) {
-        isEscape = (evt.key === "Escape" || evt.key === "Esc");
-    } else {
-        isEscape = (evt.keyCode === 27);
-    }
-    if (isEscape) {
-    	hideDisplayElement();
-    }
+	evt = evt || window.event;
+	var isEscape = false;
+	if ("key" in evt) {
+		isEscape = (evt.key === "Escape" || evt.key === "Esc");
+	} else {
+		isEscape = (evt.keyCode === 27);
+	}
+	if (isEscape) {
+		hideDisplayElement();
+	}
 };
 if (!Array.from) {
 	Array.from = (function () {
-	  var toStr = Object.prototype.toString;
-	  var isCallable = function (fn) {
-		return typeof fn === 'function' || toStr.call(fn) === '[object Function]';
-	  };
-	  var toInteger = function (value) {
-		var number = Number(value);
-		if (isNaN(number)) { return 0; }
-		if (number === 0 || !isFinite(number)) { return number; }
-		return (number > 0 ? 1 : -1) * Math.floor(Math.abs(number));
-	  };
-	  var maxSafeInteger = Math.pow(2, 53) - 1;
-	  var toLength = function (value) {
-		var len = toInteger(value);
-		return Math.min(Math.max(len, 0), maxSafeInteger);
-	  };
-  
-	  // The length property of the from method is 1.
-	  return function from(arrayLike/*, mapFn, thisArg */) {
-		// 1. Let C be the this value.
-		var C = this;
-  
-		// 2. Let items be ToObject(arrayLike).
-		var items = Object(arrayLike);
-  
-		// 3. ReturnIfAbrupt(items).
-		if (arrayLike == null) {
-		  throw new TypeError('Array.from requires an array-like object - not null or undefined');
-		}
-  
-		// 4. If mapfn is undefined, then let mapping be false.
-		var mapFn = arguments.length > 1 ? arguments[1] : void undefined;
-		var T;
-		if (typeof mapFn !== 'undefined') {
-		  // 5. else
-		  // 5. a If IsCallable(mapfn) is false, throw a TypeError exception.
-		  if (!isCallable(mapFn)) {
-			throw new TypeError('Array.from: when provided, the second argument must be a function');
-		  }
-  
-		  // 5. b. If thisArg was supplied, let T be thisArg; else let T be undefined.
-		  if (arguments.length > 2) {
-			T = arguments[2];
-		  }
-		}
-  
-		// 10. Let lenValue be Get(items, "length").
-		// 11. Let len be ToLength(lenValue).
-		var len = toLength(items.length);
-  
-		// 13. If IsConstructor(C) is true, then
-		// 13. a. Let A be the result of calling the [[Construct]] internal method 
-		// of C with an argument list containing the single item len.
-		// 14. a. Else, Let A be ArrayCreate(len).
-		var A = isCallable(C) ? Object(new C(len)) : new Array(len);
-  
-		// 16. Let k be 0.
-		var k = 0;
-		// 17. Repeat, while k < len… (also steps a - h)
-		var kValue;
-		while (k < len) {
-		  kValue = items[k];
-		  if (mapFn) {
-			A[k] = typeof T === 'undefined' ? mapFn(kValue, k) : mapFn.call(T, kValue, k);
-		  } else {
-			A[k] = kValue;
-		  }
-		  k += 1;
-		}
-		// 18. Let putStatus be Put(A, "length", len, true).
-		A.length = len;
-		// 20. Return A.
-		return A;
-	  };
+			var toStr = Object.prototype.toString;
+			var isCallable = function (fn) {
+			return typeof fn === 'function' || toStr.call(fn) === '[object Function]';
+			};
+		var toInteger = function (value) {
+			var number = Number(value);
+			if (isNaN(number)) { return 0; }
+			if (number === 0 || !isFinite(number)) { return number; }
+			return (number > 0 ? 1 : -1) * Math.floor(Math.abs(number));
+		};
+		var maxSafeInteger = Math.pow(2, 53) - 1;
+		var toLength = function (value) {
+			var len = toInteger(value);
+			return Math.min(Math.max(len, 0), maxSafeInteger);
+		};
+		return function from(arrayLike) {
+			var C = this;
+			var items = Object(arrayLike);
+			if (arrayLike == null) {
+				throw new TypeError('Array.from requires an array-like object - not null or undefined');
+			}
+			var mapFn = arguments.length > 1 ? arguments[1] : void undefined;
+			var T;
+			if (typeof mapFn !== 'undefined') {
+				if (!isCallable(mapFn)) {
+					throw new TypeError('Array.from: when provided, the second argument must be a function');
+				}
+				if (arguments.length > 2) {
+					T = arguments[2];
+				}
+			}
+			var len = toLength(items.length);
+			var A = isCallable(C) ? Object(new C(len)) : new Array(len);
+			var k = 0;
+			var kValue;
+			while (k < len) {
+				kValue = items[k];
+				if (mapFn) {
+					A[k] = typeof T === 'undefined' ? mapFn(kValue, k) : mapFn.call(T, kValue, k);
+				} else {
+					A[k] = kValue;
+				}
+				k += 1;
+			}
+			A.length = len;
+			return A;
+		};
 	}());
-  }
+}
