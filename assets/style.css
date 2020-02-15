@@ -29,12 +29,14 @@ div.main {
 div.panel {
 	float: left;
 	display: inline;
-	width: 7vw;
+	width: auto;
 	max-width: 60vw;
-	padding: 4px 4vw;
 	text-align: center !important;
 	margin: 2vw 6vw 2vw 0px;
 	border-radius: 10px;
+}
+div.panel > div {
+	padding: 4px 4vw;
 }
 div.main, div.panel {
 	background-color: #FEFEFB;
@@ -55,6 +57,7 @@ ul.navigation {
 	list-style-type: none;
 	text-align: center;
 	padding-left: 0px;
+	min-width: 7vw;
 }
 ul.navigation > li {
 	margin: 6px 0px;
