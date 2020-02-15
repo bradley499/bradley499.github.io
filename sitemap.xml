@@ -12,17 +12,7 @@
 	</url>
 	<url>
 		<loc>https://bradley499.github.io/updates</loc>
-		<changefreq>daily</changefreq>
+		<changefreq>hourly</changefreq>
 		<priority>0.8</priority>
-	</url>
-	<url>
-		<loc>https://bradley499.github.io/updates/1</loc>
-		<changefreq>daily</changefreq>
-		<priority>0.7</priority>
-	</url>
-	<url>
-		<loc>https://bradley499.github.io/updates/2</loc>
-		<changefreq>daily</changefreq>
-		<priority>0.7</priority>
 	</url>
 </urlset>
