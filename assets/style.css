@@ -157,22 +157,23 @@ div.updateMessageAttachmentsContainer {
 	width:90%;
 	margin: auto auto 16px;
 }
-h2.updateMessageTitle {
-	display: inline-block;
+span.updateMessageTitle {
+	display: table-caption;
 	margin: 0.83em 0;
 	width: 100%;
 	font-size: xx-large;
+	font-weight: bold;
 }
-h2.updateMessageShowLinkborderNo:hover::after {
+span.updateMessageShowLinkborderNo:hover::after {
 	content: none !important;
 	margin: 0;
 	padding: 0;
 	background-image: none !important;
 }
-h2.noAfterContent::after {
+.noAfterContent::after {
 	content: none !important;
 }
-h2.updateMessageTitle:hover::after {
+span.updateMessageTitle:hover::after {
 	content: "  ";
 	width:24px;
 	min-width: 24px;
