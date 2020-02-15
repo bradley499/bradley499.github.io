@@ -133,7 +133,7 @@ function buildUpdates(data, uid, tag, git_repos) {
 		if (data.length >= 1) {
 			var base = data.length - git_repos + 1;
 			updateMessage = [];
-			updateBase = "<div class=\"updateMessage {{isResultsPage}}\"><a {{hrefUid}} class=\"updateMessageLink\"><span class=\"updateMessageTitle {{isLinkable}} updateMessageShowLink{{isResultsPage}}\">{{header}}</span></a>{{attachments}}{{perLine}}<div class=\"updateMessageTagsContainer\">{{categories}}</div><div class=\"updateMessagePublishTime\"><a {{hrefUid}} class=\"updateMessageLink\">{{time}}</a></div></div>";
+			updateBase = "<div class=\"updateMessage {{isResultsPage}}\"><a {{hrefUid}} class=\"updateMessageLink\"><h2 class=\"updateMessageTitle {{isLinkable}} updateMessageShowLink{{isResultsPage}}\">{{header}}</h2></a>{{attachments}}{{perLine}}<div class=\"updateMessageTagsContainer\">{{categories}}</div><div class=\"updateMessagePublishTime\"><a {{hrefUid}} class=\"updateMessageLink\">{{time}}</a></div></div>";
 			perLine = "<p class=\"updateMessageContent\">{{message}}</p>";
 			hrefUid = "href=\"/updates/{{uid}}\"";
 			attachments = "<div class=\"updateMessageAttachmentsContainerBase\"><div class=\"updateMessageAttachmentsContainer {{containerBaseOveride}}\">{{attachment}}</div></div>";
