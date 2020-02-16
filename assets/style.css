@@ -2,6 +2,7 @@ html, body {
 	padding: 0px;
 	font-family: arial;
 	background-color: #eeeeee;
+	margin: 0px;
 }
 div.banner {
 	padding-top:40px;
@@ -18,12 +19,15 @@ div.bannerImg {
 	background-size: 200px 200px;
 	outline: none;
 }
+div.content {
+	margin: 0px 0.5em 0.5em;
+}
 div.main {
 	float: left;
 	max-width: 60vw;
 	min-width: 60vw;
 	padding: 2vw 4vw;
-	margin: 2vw 2vw 2vw 6vw;
+	margin: 2vw 2vw 1vw 6vw;
 	border-radius: 10px;
 }
 div.panel {
@@ -47,6 +51,26 @@ div.panel > em {
 }
 h1#name {
 	margin-bottom: 0px;
+}
+div#privacy {
+	display: block;
+	width: 74vw;
+	float: left;
+	margin: auto;
+	text-align: center;
+}
+div#privacy > p {
+	max-width: 90vw;
+	margin: 0px auto 1em;
+	font-size: xx-small;
+	color: gray;
+}
+div#privacy > p > a {
+	color: inherit;
+	text-decoration: none;
+}
+a.boldLink {
+	font-weight: bold;
 }
 p.about {
 	color: gray;
@@ -423,6 +447,9 @@ div.spinner {
 		float: none !important;
 		padding: 2vw 4vw;
 	}
+	div#privacy {
+		width: 100vw;
+	}
 }
 @media (max-width:992px) {
 	div.main, div.panel {
@@ -430,6 +457,10 @@ div.spinner {
 		min-width: 80vw;
 		margin: 2vw 4vw;
 		padding: 2vw 4vw;
+	}
+	div#privacy {
+		width: 100vw;
+		margin-top: 0.5em;
 	}
 	span.addressDisplayBuffer {
 		display: none;

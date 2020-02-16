@@ -313,15 +313,15 @@ function parseMd(md, isFirst){
 	md = md.replace(/[\#]{1}(.+)/g, "<h1 class=\"noTop\">$1</h1>");
 	md = md.replace(/^(.+)\n\=+/gm, "<h1 class=\"noTop\">$1</h1>");
 	md = md.replace(/^(.+)\n\-+/gm, "<h2 class=\"noTop\">$1</h2>");
-	md = md.replace(/\[(.*?)\]\((.*?)\)/gi, "<a href=\"$2\" target=\"_blank\" class=\"link\">$1</a>");
 	md = md.replace(/[\*\_]{2}([^\*\_]+)[\*\_]{2}/g, "<b>$1</b>");
 	md = md.replace(/[\*\_]{1}([^\*\_]+)[\*\_]{1}/g, "<i>$1</i>");
+	md = md.replace(/\[(.*?)\]\((.*?)\)/gi, "<a href=\"$2\" target=\"_blank\" class=\"link\">$1</a>");
 	md = md.replace(/[\~]{2}([^\~]+)[\~]{2}/g, '<del>$1</del>');
 	md = md.replace(/^\s*\n\`\`\`(([^\s]+))?/gm, "<pre class=\"$2\">");
 	md = md.replace(/^\`\`\`\s*\n/gm, "</pre>\n\n");
 	md = md.replace(/[\`]{1}([^\`]+)[\`]{1}/g, "<code>$1</code>");
 	md = md.replace(/^\s*(\n)?(.+)/gm, function(m){
-		return  /\<(\/)?(h\d|ul|ol|li|blockquote|pre|img)/.test(m) ? m : "<p class=\"updateMessageContent noTop\"\">"+m+"</p>";
+		return  /\<(\/)?(h\d|ul|ol|li|blockquote|pre|img)/.test(m) ? m : "<p class=\"updateMessageContent noTop\">"+m+"</p>";
 	});
 	md = md.replace(/(\<pre.+\>)\s*\n\<p\>(.+)\<\/p\>/gm, "$1$2");
 	return md;
