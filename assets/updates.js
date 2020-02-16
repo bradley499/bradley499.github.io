@@ -35,7 +35,7 @@ var res_data = [false,false];
 function loadUpdates(uid,tag) {
 	uid = uid || null;
 	tag = tag || null;
-	if (uid != null && tag != null) {
+	if ((uid != null && tag != null) || uid == 0) {
 		document.getElementById("updateContent").innerHTML = errorDocument;
 		return false;
 	}
