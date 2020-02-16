@@ -26,7 +26,7 @@ div.main {
 	float: left;
 	max-width: 60vw;
 	min-width: 60vw;
-	padding: 2vw 4vw;
+	padding: 2vw 4vw 1vw;
 	margin: 2vw 2vw 1vw 6vw;
 	border-radius: 10px;
 }
@@ -58,6 +58,7 @@ div#privacy {
 	float: left;
 	margin: auto;
 	text-align: center;
+	padding-left: 4vw;
 }
 div#privacy > p {
 	max-width: 90vw;
@@ -449,6 +450,7 @@ div.spinner {
 	}
 	div#privacy {
 		width: 100vw;
+		padding-left: 0;
 	}
 }
 @media (max-width:992px) {
@@ -461,6 +463,7 @@ div.spinner {
 	div#privacy {
 		width: 100vw;
 		margin-top: 0.5em;
+		padding-left: 0;
 	}
 	span.addressDisplayBuffer {
 		display: none;
