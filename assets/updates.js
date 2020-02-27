@@ -71,17 +71,11 @@ function loadUpdates(uid,tag) {
 				}
 			} catch(err) {}
 			res_data = res_data[0];
-			x = 0
-			while (x < 3){
-				x+=1
-				try {
-					document.getElementById("updateContent").innerHTML = buildUpdates(res_data,uid,tag,git_repos);
-				} catch(err) {
-					window.setTimeout(function(){document.getElementById("updateContent").innerHTML = buildUpdates(res_data,uid,tag,git_repos)},100);
-				}
+			x = 0;
+			function classDisplayOverides(uid,isIE) {
 				if (uid != null) {
 					var el = document.getElementsByClassName("updateMessageLink");
-					for (var i=0; i < el.length; i++) {
+					for (var i = el.length - 1; i >= 0; i--) {
 						el.item(i).outerHTML = el.item(i).innerHTML;
 					}
 				}
@@ -91,6 +85,16 @@ function loadUpdates(uid,tag) {
 						el.item(i).classList.add("displayBlockOveride");
 					}
 				} 
+			}
+			while (x < 3){
+				x+=1
+				try {
+					document.getElementById("updateContent").innerHTML = buildUpdates(res_data,uid,tag,git_repos);
+					x = 3;
+				} catch(err) {
+					window.setTimeout(function(){document.getElementById("updateContent").innerHTML = buildUpdates(res_data,uid,tag,git_repos);classDisplayOverides(uid,isIE);},100);
+				}
+				classDisplayOverides(uid,isIE);
 			}
 		}
 		refreshTriggers();
