@@ -3,6 +3,7 @@ html, body {
 	font-family: arial;
 	background-color: #eeeeee;
 	margin: 0px;
+	font-size: 18px;
 }
 div.banner {
 	padding-top:40px;
@@ -101,6 +102,9 @@ span.link {
 }
 a.linkBlank {
 	color: #000000;
+}
+p {
+	line-height: 25px;
 }
 li > ul {
 	padding-left: 18px;
