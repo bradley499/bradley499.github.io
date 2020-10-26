@@ -1,1 +1,304 @@
-[["Hack:Brunel","I attended my first hackathon, which was held at [Brunel University](https://www.brunel.ac.uk/ \"Brunel University\") in Uxbridge, London. With [Hack Brunel](https://hackbrunel.com/ \"Hack:Brunel\") being my first hackathon, I wasn’t quite sure what to expect; was I to do good, or not? I went there with other students from my university, whom were also members of the Solent Computing Society. We all arrived very early in the morning outside our university, ready and eager to have fun and get work done. Once we all met up together, we then travelled to Uxbridge, not without a quick stop off at the motorway services to get some food… Upon arrival to [Brunel University](https://www.brunel.ac.uk/ \"Brunel University\"), we were raring to go and get to work; however, we arrived a bit to early, so we had to wait for the other participants to arrive, but this worked out in our benefit, as we were able to split into smaller teams and brainstorm ideas for us to make for the event.\nOnce the event started, my team reviewed all of our existing ideas and decided to go along with the idea which fixes the problems for us at our society, as typically there are struggles when thinking of new and interesting things to do. So we set out to create a responsive web based application which finds an activity for you to do based upon specified search criteria. When creating the application, we originally thought that we could use Google maps to gather information of places nearby, however we soon discovered that this would be a paid service per API request, so we decided to create a localised dataset of places – instead of relying on third parties.\nFor the project I was tasked with the creation of the application, which for me included creating a responsive front-end interface; this undertook many iterations, however with suggestions from our team we came to the final design, and I built and laid out the elements and created a responsive design language for the application. Next came the inclusion of JavaScript to make the page interactive, with this I had a realisation, with the JavaScript actions operating with the application there was only instantaneous updates/refreshed to the display, so I had the idea to create and implement transitions between each page of the application, this allows the application to move and dynamically resize to fit to content in a seamless yet beautiful way, this resulted in the application looking much more user friendly and intuitive as an added benefit was that with the movement between transitions actually helped show that back-end operations were occurring, which would further help the user understand what was happening when the application was running.\nWith the completed version of the application, it was time to present, so me and a fellow teammate went up on stage to promote our application “Wheel” was the name we gave to it, and I came up with our team tag line of “we are reinventing the wheel”. For the presentation it was originally meant to be a 50/50 split in talk time between both of us on stage, but due to the amount of content that we crammed into our presentation it was only my team mate that was able to talk. Once all of the teams had presented it was time for judging… To our joyful responses, we was told that we came in second place; and we each won a prize, which was an [Elegoo UNO Project Super Starter Kit](https://www.elegoo.com/product/elegoo-uno-project-super-starter-kit/). Overall, I’d say my first hackathon experience went very well, and I am looking forward to more. To celebrate we even used our application to find a nearby pub, where some of the others got a drink in celebration. However, I was rather tired after the event, so after we left and got back, I went to sleep, as a big part of hackathons which I learnt was the lack of sleep which accumulates with them.\nHowever, overall I had a very fun time, and I am looking forward to more events like this in the future!",[["IMG-20191028-WA0058.jpg","Us on our way to Brunel University - during a quick stop at a motorway services station for a quick bite of food."],["IMG-20191028-WA0050.jpg","Myself and fellow teammate Matt, having a midnight pizza whilst creating Wheel."],["VID_20191027_132655.mp4","Myself and fellow teammate Josh presenting our application to the others at the hackathon.","THUMBNAIL_VID_20191027_132655.png"],["IMG-20191028-WA0081.jpg","Us collecting our prizes after winning the second place prize!"],["IMG-20191028-WA0085.jpg","Team Solent group picture."],["selection_crown.png","An example screenshot from the Wheel application whilst in development."]],["hackathons"],1572199200],["Kerbspace","My second hackathon was in central London, and was run by a subset of [Ford Mobility](https://www.ford-mobility.eu/ \"Ford Mobility\") and the overall task was to create an application that used their brand new Kerbspace API. For us (team Solent) went in with high spirits, and a [Red Bull™](https://redbull.com/ \"Red Bull™\") sponsorship - hence our creation of the \"Tower of Red Bull\". Upon arrival, our main idea was to create an application that would used facial recognition to detect the users of the app when driving, and then find the perfect place to park - based on their preferences - by using the Kerbspace API. Development started off slowly as we had to learn how the API worked, and what it could do on our own, which was rather a big struggle for us, as we essentially had to learn it from the ground up, without any knowledge of what it could do or how to do it.\nWith gaining a basic understanding of the API, we were able to create a prototype which filtered the response from the API with the service written in Python to form a rudimentary server, the data was then provided to a local application, that rendered the location data for an augmented reality view for the user to view in a mobile viewport. With this basic working prototype application, we then went off to present what we have done. However, when presenting we was plagued with issues such as: facial recognition failure, and hardware failure; I fear that it could be said that we struggled from our own success. Hence resulting, in us not winning this competition, but we left with a spring in our step, and set off back to Southampton.",[["49157541072_e57231b04d_o.jpg","Team Solent at Kerbspace Hack."],["IMG-20191201-WA0000.jpg","Our tower of Red Bull™!"],["IMG-20191202-WA0002.jpg","A photo of Liverpool Street Station."],["IMG_20191130_115748.jpg","I Goat Statue - Spitalfields."]],["hackathons"],1575230400],["Hack The South","My third hackathon was hosted at the nearby [University of Southampton](https://www.southampton.ac.uk/ \"University of Southampton\"), it was there only after a short cycle journey I had arrived, and was anticipating the arrivals of my teammates. At this hackathon we split of into smaller teams, and started brainstorming ideas of what it was that we could create within the 24 hour time frame; we came up with a few ideas, but the one, that we really took hold to was a property fault management system, that used blockchain technologies to log tenant requests (tickets), which were then automatically filtered by what the landlord had specified that they would be willing to accommodate to - for an abundance of reasons - and if any tradesmen met the criteria would then be assigned to the tenant’s ticket request.\nThis idea seemed really good for us, as it seemed to be an idea that had not been replicated elsewhere. We started off making the application, this included servers, databases, as well as a client based application. The server and databases were handled in unison, and the MongoDB database was access by the Mongoose API from the Node.js server, this allowed us to query the data from the database collections, and allowed us to further mimic and fine-tune what the data to be sent to the client would be, in this case the server filtered out the distance that a tradesman would be willing to commute, based among query parameters of the longitude or latitude of the property address. This allowed us to further customise how we - as a team - would encompass the types of data that would be shown. The client interface was originally written within the Angular framework, but we decided to move to the Ionic framework, to improve the consistency of the interface; and was used to relay the data that was generated by the Node.js server. We then set of to select a name for the application, which was decided to be called \"DROID\". With this we had a working prototype, and we went off to present our application to the other teams that were at the event.\nOur presentation went fairly well, although we was cut off due to the time limitations, of which we exceeded due to the amount of information that we tried to cram into the presentation; which was not ideal, although we was able to show off a demo of our application, which we were however pleased about. After the remaining teams presented it was time for judging, and once the judges returned back with their selection of winners, we all collectively waited in anticipation, each eager to hear the results. Needless to say we were disappointed with the outcome, as we did not win; but we were happy with what we had made in the process, and shall take this experience along with us into future projects.",[["87860382_790115921499110_4245417100119638016_o.jpg","Team Solent at Hack The South."],["87868441_790110594832976_2527527952355164160_o.jpg","Myself starting the presentation for DROID."],["88013142_790110684832967_1888304370508890112_o.jpg","Myself talking about the projected userbase."]],["hackathons"],1581274800],["President elect","I have been elected President of the [Solent Computing Society](https://solentcomputingsociety.github.io), and I shall undertake the position for the next academic year. I was elected due to my broad appeal throughout the society, as I had been engaging in multiple events, whilst building strong relationships with the society members. As President-elect I will have to wait until the handover date, which will be in August of this year (2020); and upon becoming President of the society, I will assist in making the society better for all members, whilst trying to increase morale and engagement between its members. I hope in the coming year of my Presidency, that I can leave a lasting impression on the society’s members, both: new, and old. Simply put, I am going to do my utmost best in making this society: inclusive, engaging, and enjoyable; as much as I possibly can!\nAlso, I thank all who voted for me to be President of the [Solent Computing Society](https://solentcomputingsociety.github.io).",[],["personal","solent","computing_society"],1588190460],["I am now a society President","Well, I am now President of the [Solent Computing Society](https://solentcomputingsociety.github.io). After a few months since the election, I am now in the top position of the [Solent Computing Society](https://solentcomputingsociety.github.io), and I shall use this authority to build up meaningful relations between society members and other parties. It is an honour being elected for this position by other like-minded people, as it shows my worth as part of a team, and as a leader. I will make sure that I will do my utmost best, for the benefit of the [Solent Computing Society](https://solentcomputingsociety.github.io), and anyone that crosses paths with myself, and the society.",[],["personal","solent","computing_society"],1596240000]]
+[
+	[
+	  "Hack:Brunel",
+	  [
+		[
+		  0,
+		  "I attended my first hackathon, which was held at "
+		],
+		[
+		  1,
+		  "https://www.brunel.ac.uk/",
+		  "Brunel University"
+		],
+		[
+		  0,
+		  " in Uxbridge, London. With "
+		],
+		[
+		  1,
+		  "https://www.brunel.ac.uk/",
+		  "Brunel University"
+		],
+		[
+		  0,
+		  " being my first hackathon, I wasn’t quite sure what to expect; was I to do good, or not? I went there with other students from my university, whom were also members of the Solent Computing Society. We all arrived very early in the morning outside our university, ready and eager to have fun and get work done. Once we all met up together, we then travelled to Uxbridge, not without a quick stop off at the motorway services to get some food… Upon arrival to "
+		],
+		[
+		  1,
+		  "https://www.brunel.ac.uk/",
+		  "Brunel University"
+		],
+		[
+		  0,
+		  ", we were raring to go and get to work; however, we arrived a bit to early, so we had to wait for the other participants to arrive, but this worked out in our benefit, as we were able to split into smaller teams and brainstorm ideas for us to make for the event.\nOnce the event started, my team reviewed all of our existing ideas and decided to go along with the idea which fixes the problems for us at our society, as typically there are struggles when thinking of new and interesting things to do. So we set out to create a responsive web based application which finds an activity for you to do based upon specified search criteria. When creating the application, we originally thought that we could use Google maps to gather information of places nearby, however we soon discovered that this would be a paid service per API request, so we decided to create a localised dataset of places – instead of relying on third parties.\nFor the project I was tasked with the creation of the application, which for me included creating a responsive front-end interface; this undertook many iterations, however with suggestions from our team we came to the final design, and I built and laid out the elements and created a responsive design language for the application. Next came the inclusion of JavaScript to make the page interactive, with this I had a realisation, with the JavaScript actions operating with the application there was only instantaneous updates/refreshed to the display, so I had the idea to create and implement transitions between each page of the application, this allows the application to move and dynamically resize to fit to content in a seamless yet beautiful way, this resulted in the application looking much more user friendly and intuitive as an added benefit was that with the movement between transitions actually helped show that back-end operations were occurring, which would further help the user understand what was happening when the application was running.\nWith the completed version of the application, it was time to present, so me and a fellow teammate went up on stage to promote our application “Wheel” was the name we gave to it, and I came up with our team tag line of “we are reinventing the wheel”. For the presentation it was originally meant to be a 50/50 split in talk time between both of us on stage, but due to the amount of content that we crammed into our presentation it was only my team mate that was able to talk. Once all of the teams had presented it was time for judging… To our joyful responses, we was told that we came in second place; and we each won a prize, which was an "
+		],
+		[
+		  1,
+		  "https://www.elegoo.com/product/elegoo-uno-project-super-starter-kit/",
+		  "Elegoo UNO Project Super Starter Kit"
+		],
+		[
+		  0,
+		  ". Overall, I’d say my first hackathon experience went very well, and I am looking forward to more. To celebrate we even used our application to find a nearby pub, where some of the others got a drink in celebration. However, I was rather tired after the event, so after we left and got back, I went to sleep, as a big part of hackathons which I learnt was the lack of sleep which accumulates with them.\nHowever, overall I had a very fun time, and I am looking forward to more events like this in the future!"
+		]
+	  ],
+	  [
+		[
+		  "IMG-20191028-WA0058.jpg",
+		  "Us on our way to Brunel University - during a quick stop at a motorway services station for a quick bite of food."
+		],
+		[
+		  "IMG-20191028-WA0050.jpg",
+		  "Myself and fellow teammate Matt, having a midnight pizza whilst creating Wheel."
+		],
+		[
+		  "VID_20191027_132655.mp4",
+		  "Myself and fellow teammate Josh presenting our application to the others at the hackathon.",
+		  "THUMBNAIL_VID_20191027_132655.png"
+		],
+		[
+		  "IMG-20191028-WA0081.jpg",
+		  "Us collecting our prizes after winning the second place prize!"
+		],
+		[
+		  "IMG-20191028-WA0085.jpg",
+		  "Team Solent group picture."
+		],
+		[
+		  "selection_crown.png",
+		  "An example screenshot from the Wheel application whilst in development."
+		]
+	  ],
+	  [
+		"hackathons"
+	  ],
+	  1572199200
+	],
+	[
+	  "Kerbspace",
+	  [
+		[
+		  0,
+		  "My second hackathon was in central London, and was run by a subset of "
+		],
+		[
+		  1,
+		  "https://www.ford-mobility.eu/",
+		  "Ford Mobility"
+		],
+		[
+		  0,
+		  " and the overall task was to create an application that used their brand new Kerbspace API. For us (team Solent) went in with high spirits, and a "
+		],
+		[
+		  1,
+		  "https://redbull.com/",
+		  "Red Bull™"
+		],
+		[
+		  0,
+		  " sponsorship - hence our creation of the \"Tower of Red Bull\". Upon arrival, our main idea was to create an application that would used facial recognition to detect the users of the app when driving, and then find the perfect place to park - based on their preferences - by using the Kerbspace API. Development started off slowly as we had to learn how the API worked, and what it could do on our own, which was rather a big struggle for us, as we essentially had to learn it from the ground up, without any knowledge of what it could do or how to do it.\nWith gaining a basic understanding of the API, we were able to create a prototype which filtered the response from the API with the service written in Python to form a rudimentary server, the data was then provided to a local application, that rendered the location data for an augmented reality view for the user to view in a mobile viewport. With this basic working prototype application, we then went off to present what we have done. However, when presenting we was plagued with issues such as: facial recognition failure, and hardware failure; I fear that it could be said that we struggled from our own success. Hence resulting, in us not winning this competition, but we left with a spring in our step, and set off back to Southampton."
+		]
+	  ],
+	  [
+		[
+		  "49157541072_e57231b04d_o.jpg",
+		  "Team Solent at Kerbspace Hack."
+		],
+		[
+		  "IMG-20191201-WA0000.jpg",
+		  "Our tower of Red Bull™!"
+		],
+		[
+		  "IMG-20191202-WA0002.jpg",
+		  "A photo of Liverpool Street Station."
+		],
+		[
+		  "IMG_20191130_115748.jpg",
+		  "I Goat Statue - Spitalfields."
+		]
+	  ],
+	  [
+		"hackathons"
+	  ],
+	  1575230400
+	],
+	[
+	  "Hack The South",
+	  [
+		[
+		  0,
+		  "My third hackathon was hosted at the nearby "
+		],
+		[
+		  1,
+		  "https://www.southampton.ac.uk",
+		  "University of Southampton"
+		],
+		[
+		  0,
+		  ", it was there only after a short cycle journey I had arrived, and was anticipating the arrivals of my teammates. At this hackathon we split of into smaller teams, and started brainstorming ideas of what it was that we could create within the 24 hour time frame; we came up with a few ideas, but the one, that we really took hold to was a property fault management system, that used blockchain technologies to log tenant requests (tickets), which were then automatically filtered by what the landlord had specified that they would be willing to accommodate to - for an abundance of reasons - and if any tradesmen met the criteria would then be assigned to the tenant’s ticket request.\nThis idea seemed really good for us, as it seemed to be an idea that had not been replicated elsewhere. We started off making the application, this included servers, databases, as well as a client based application. The server and databases were handled in unison, and the MongoDB database was access by the Mongoose API from the Node.js server, this allowed us to query the data from the database collections, and allowed us to further mimic and fine-tune what the data to be sent to the client would be, in this case the server filtered out the distance that a tradesman would be willing to commute, based among query parameters of the longitude or latitude of the property address. This allowed us to further customise how we - as a team - would encompass the types of data that would be shown. The client interface was originally written within the Angular framework, but we decided to move to the Ionic framework, to improve the consistency of the interface; and was used to relay the data that was generated by the Node.js server. We then set of to select a name for the application, which was decided to be called \"DROID\". With this we had a working prototype, and we went off to present our application to the other teams that were at the event.\nOur presentation went fairly well, although we was cut off due to the time limitations, of which we exceeded due to the amount of information that we tried to cram into the presentation; which was not ideal, although we was able to show off a demo of our application, which we were however pleased about. After the remaining teams presented it was time for judging, and once the judges returned back with their selection of winners, we all collectively waited in anticipation, each eager to hear the results. Needless to say we were disappointed with the outcome, as we did not win; but we were happy with what we had made in the process, and shall take this experience along with us into future projects."
+		]
+	  ],
+	  [
+		[
+		  "87860382_790115921499110_4245417100119638016_o.jpg",
+		  "Team Solent at Hack The South."
+		],
+		[
+		  "87868441_790110594832976_2527527952355164160_o.jpg",
+		  "Myself starting the presentation for DROID."
+		],
+		[
+		  "88013142_790110684832967_1888304370508890112_o.jpg",
+		  "Myself talking about the projected userbase."
+		]
+	  ],
+	  [
+		"hackathons"
+	  ],
+	  1581274800
+	],
+	[
+	  "President elect",
+	  [
+		[
+		  0,
+		  "I have been elected President of the "
+		],
+		[
+		  1,
+		  "https://solentcomputingsociety.github.io",
+		  "Solent Computing Society"
+		],
+		[
+		  0,
+		  ", and I shall undertake the position for the next academic year. I was elected due to my broad appeal throughout the society, as I had been engaging in multiple events, whilst building strong relationships with the society members. As President-elect I will have to wait until the handover date, which will be in August of this year (2020); and upon becoming President of the society, I will assist in making the society better for all members, whilst trying to increase morale and engagement between its members. I hope in the coming year of my Presidency, that I can leave a lasting impression on the society’s members, both: new, and old. Simply put, I am going to do my utmost best in making this society: inclusive, engaging, and enjoyable; as much as I possibly can!\nAlso, I thank all who voted for me to be President of the "
+		],
+		[
+		  1,
+		  "https://solentcomputingsociety.github.io",
+		  "Solent Computing Society"
+		],
+		[
+		  0,
+		  "."
+		]
+	  ],
+	  [],
+	  [
+		"personal",
+		"solent",
+		"computing_society"
+	  ],
+	  1588190460
+	],
+	[
+	  "I am now a society President",
+	  [
+		[
+		  0,
+		  "Well, I am now President of the "
+		],
+		[
+		  1,
+		  "https://solentcomputingsociety.github.io",
+		  "Solent Computing Society"
+		],
+		[
+		  0,
+		  ". After a few months since the election, I am now in the top position of the "
+		],
+		[
+		  1,
+		  "https://solentcomputingsociety.github.io",
+		  "Solent Computing Society"
+		],
+		[
+		  0,
+		  ", and I shall use this authority to build up meaningful relations between society members and other parties. It is an honour being elected for this position by other like-minded people, as it shows my worth as part of a team, and as a leader. I will make sure that I will do my utmost best, for the benefit of the "
+		],
+		[
+		  1,
+		  "https://solentcomputingsociety.github.io",
+		  "Solent Computing Society"
+		],
+		[
+		  0,
+		  ", and anyone that crosses paths with myself, and the society."
+		]
+	  ],
+	  [],
+	  [
+		"personal",
+		"solent",
+		"computing_society"
+	  ],
+	  1596240000
+	],
+	[
+	  "I'm making my own programming language",
+	  [
+		[
+		  0,
+		  "I'm been spending the past few months working on developing my own programming language for embedded devices (although can be run on feature rich computers - I'm not sure why anyone would want to, but who am I to decide it's fate). The design of the language was to have minimal processes running on a device which would not typically have enough memory space to confidently run a full program with multiple modern paradigms. Instead this language was designed in relation for logical operations to support mathematical and computation processes; so it has a limited feature set, although this can be augmented with modification to it's source (if that's what you're into). A limited feature set of procedural calls is what allows it to be modular in a sense. The language was born out of a problem where on many embedded devices only one program can be compiled to operate within it's confines; so I came to the conclusion that programs can be transferred to it's host program/system and can be executed to return calculation in a modular fashion. This may seem convoluted to some, but the idea came out of my desire to do such a thing - running multiple different programs (or in the sense I wanted to use it for: portable applications) on a low powered embedded device - and although developing this programming language was due to my design to do this such thing; ironically I haven't gotten round to that yet. Oh well... I would like to get to the stage of developing the real reason for creating this language at one point though. But since I made this language, I thought to myself that I shouldn't keep this language private/proprietary, as people may need the same thing; and deep down I though this could be used to teach children how to program on a rudimentary level, as the syntax is in my mind a cross between: Assembly, and Python; an interesting mix you may think? But, I see it as being an interesting endeavour for anyone who wants a challenge, or a reason to learn something new. I decided to make the language exclusively floating point, as for mathematical operations, it would be much simpler for the developer of the program to not worry about different data types when writing programs for mathematical operations; ironically the program interpreter I developed still uses different data types, but that may just me seeing an ironic oversight in it's development; but my case for the use of floating point data types exclusively still stands, I see it as a trivial yet underappreciated aspect of development; floating point operations and logic are so interesting to me, and I hope that my development of this language could be seen as more of a labour of love for that data type."
+		]
+	  ],
+	  [],
+	  [
+		"personal",
+		"real_lang",
+		"dev_thoughts"
+	  ],
+	  1603578861
+	],
+	[
+	  "My quarrels with recursion",
+	  [
+		[
+		  0,
+		  "I thought that storing the majority of object memory on the heap would be a good idea, as it did allow me to have more variable iteration within deep recursive functions, but that seemed to be more of an oversight on my behalf; I wanted extensively deep recursive functions, and that wasn't really the best idea... Who would need to have a function recursively run itself more than 50,000 times? So, I will need to redesign my programming language to have a recursion limit, I'm thinking of around 5,000 levels of recursion - I'm hoping this will not result in a segmentation fault; but, I guess I'm just going to have to find out when/if it happens. For the meantime, I will be moving most of my memory for small elements such as variables to the stack."
+		]
+	  ],
+	  [],
+	  [
+		"personal",
+		"real_lang",
+		"dev_thoughts"
+	  ],
+	  1603631526
+	],
+	[
+	  "Enforcing a limitation on recursion",
+	  [
+		[
+		  0,
+		  "Implementing a limit of recursion was simply done, but instead of a segmentation fault occurring due to too much recursion, a handled error occurs when the program exceeds 4999 recursive/nested calls to an additional function; this is different to the aforementioned segmentation fault, but at least this can now be handled as a defined program exception exit code."
+		]
+	  ],
+	  [],
+	  [
+		"personal",
+		"real_lang",
+		"dev_thoughts"
+	  ],
+	  1603633618
+	],
+	[
+	  "Numeric constants within packaging",
+	  [
+		[
+		  0,
+		  "I've come to the realisation that the package format that I have designed to keep the portability of the program's as simple as possible, indeed has a flaw; in the form of number storing, and as a result, I will have to enforce a limit of defined numerical values in packaged format to be within the confines of below -9,999,999 and over 9,999,999; I've decided to enforce this limit, as for the intended purposes of the language, I do not see a use case for there to be more than 1,000,000 either way of 0 for embedded devices; although I may increment the spectrum to further cater for larger number due to deficits - if I am required to - but, for now the implementation of it seems stable enough to use; I may decide to seclude this outcome when further testing sufficiently allows for larger numeric values at a stable rate, but for now this seems like a decent approach for the use case that I want to develop it for - within aspects of code portability."
+		]
+	  ],
+	  [],
+	  [
+		"personal",
+		"real_lang",
+		"dev_thoughts"
+	  ],
+	  1603662078
+	]
+  ]
