@@ -63,7 +63,7 @@ function loadUpdates(uid,tag) {
 				if (res_data[1]["items"].length > 0) {
 					git_repos = res_data[1]["items"].length;
 					for (var i = res_data[1]["items"].length - 1; i >= 0; i--) {
-						res_data[0].push([res_data[1]["items"][i]["name"],"Bradley created a new repository called \"" + res_data[1]["items"][i]["name"] + "\" on GitHub.\n" + res_data[1]["items"][i]["description"] + "\nTake a look at it on GitHub at: [" + res_data[1]["items"][i]["html_url"] + "](" + res_data[1]["items"][i]["html_url"] + " \"View " + res_data[1]["items"][i]["name"] + " on GitHub\")",[],["GitHub"],Date.parse(res_data[1]["items"][i]["created_at"])/1000,true]);
+						res_data[0].push([res_data[1]["items"][i]["name"],[[0,"Bradley created a new repository called \"" + res_data[1]["items"][i]["name"] + "\" on GitHub.\n" + res_data[1]["items"][i]["description"] + "\nTake a look at it on GitHub at: "],[1,res_data[1]["items"][i]["html_url"],res_data[1]["items"][i]["html_url"]]],[],["GitHub"],Date.parse(res_data[1]["items"][i]["created_at"])/1000,true]);
 					}
 					res_data[0] = res_data[0].sort(function(a,b) {
 						return a[4] - b[4];
@@ -155,7 +155,7 @@ function buildUpdates(data, uid, tag, git_repos) {
 				}
 				updateBaseBuild = updateBase;
 				updateLine = [];
-				updateLine.unshift(parseMd(data[i][1]));
+				updateLine.unshift(buildPost(data[i][1]));
 				categoriesCollection = [];
 				tag_match = false;
 				for (var ii = data[i][3].length - 1; ii >= 0; ii--) {
@@ -301,36 +301,24 @@ function convert(unixtimestamp){
 	return convdataTime; 
 }
 
-function parseMd(md, isFirst){
-	md = md || "";
-	isFirst = isFirst || false;
-	md = md.replace(/^\s*\n\*/gm, "<ul>\n*");
-	md = md.replace(/^(\*.+)\s*\n([^\*])/gm, "$1\n</ul>\n\n$2");
-	md = md.replace(/^\*(.+)/gm, "<li>$1</li>");
-	md = md.replace(/^\s*\n\d\./gm, "<ol>\n1.");
-	md = md.replace(/^(\d\..+)\s*\n([^\d\.])/gm, "$1\n</ol>\n\n$2");
-	md = md.replace(/^\d\.(.+)/gm, "<li>$1</li>");
-	md = md.replace(/^\>(.+)/gm, "<blockquote>$1</blockquote>");
-	md = md.replace(/[\#]{6}(.+)/g, "<h6 class=\"noTop\">$1</h6>");
-	md = md.replace(/[\#]{5}(.+)/g, "<h5 class=\"noTop\">$1</h5>");
-	md = md.replace(/[\#]{4}(.+)/g, "<h4 class=\"noTop\">$1</h4>");
-	md = md.replace(/[\#]{3}(.+)/g, "<h3 class=\"noTop\">$1</h3>");
-	md = md.replace(/[\#]{2}(.+)/g, "<h2 class=\"noTop\">$1</h2>");
-	md = md.replace(/[\#]{1}(.+)/g, "<h1 class=\"noTop\">$1</h1>");
-	md = md.replace(/^(.+)\n\=+/gm, "<h1 class=\"noTop\">$1</h1>");
-	md = md.replace(/^(.+)\n\-+/gm, "<h2 class=\"noTop\">$1</h2>");
-	md = md.replace(/[\*\_]{2}([^\*\_]+)[\*\_]{2}/g, "<b>$1</b>");
-	md = md.replace(/[\*\_]{1}([^\*\_]+)[\*\_]{1}/g, "<i>$1</i>");
-	md = md.replace(/\[(.*?)\]\((.*?)\)/gi, "<a href=\"$2\" target=\"_blank\" class=\"link\">$1</a>");
-	md = md.replace(/[\~]{2}([^\~]+)[\~]{2}/g, '<del>$1</del>');
-	md = md.replace(/^\s*\n\`\`\`(([^\s]+))?/gm, "<pre class=\"$2\">");
-	md = md.replace(/^\`\`\`\s*\n/gm, "</pre>\n\n");
-	md = md.replace(/[\`]{1}([^\`]+)[\`]{1}/g, "<code>$1</code>");
-	md = md.replace(/^\s*(\n)?(.+)/gm, function(m){
-		return  /\<(\/)?(h\d|ul|ol|li|blockquote|pre|img)/.test(m) ? m : "<p class=\"updateMessageContent noTop\">"+m+"</p>";
-	});
-	md = md.replace(/(\<pre.+\>)\s*\n\<p\>(.+)\<\/p\>/gm, "$1$2");
-	return md;
+function buildPost(postData){
+	postData = postData || [];
+	if (postData.length == 0) {
+		return "";
+	}
+	var post = "<p class=\"updateMessageContent noTop\">";
+	for (let i = 0; i < postData.length; i++) {
+		switch (postData[i][0]) {
+			case 0:
+				post = post + postData[i][1].split("\n").join("</p><p class=\"updateMessageContent noTop\">");
+				break;
+			case 1:
+				post = post + "<a href=\"" + postData[i][1] + "\" title=\"Go to " + postData[i][1] + "\" target=\"_blank\" class=\"link\">" + postData[i][2] + "</a>";
+			default:
+				break;
+		}
+	}
+	return post;
 }
 
 function attachmentSelection(event) {
