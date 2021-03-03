@@ -36,7 +36,6 @@
 						} else if (this.readyState === 4){
 							if (request.status === 200) {
 								const response = JSON.parse(this.responseText);
-								sending = false;
 								document.body.style.cursor = "";
 								inputs.forEach(element => {
 									element.removeAttribute("disabled");
@@ -56,9 +55,6 @@
 							}
 						}
 					};
-					request.onerror = function () {
-						sending = false;
-					}
 					request.send(JSON.stringify(contact));
 				});
 			});			
