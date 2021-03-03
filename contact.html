@@ -13,12 +13,53 @@
 			gtag('config', 'UA-157001746-1');
 		</script>
 		<script type="text/javascript">
-			submitted = false;
-			window.addEventListener("load",function() {
-				document.getElementById('gform').addEventListener("submit",function(e) {
-					document.getElementById('hidden_iframe').addEventListener("load", function() {
-						window.location.href = "submitted"
+			document.addEventListener("DOMContentLoaded",function() {
+				document.getElementById("formContact").addEventListener("submit",function(e) {
+					e.preventDefault();
+					const inputs = [document.getElementById("contactName"), document.getElementById("contactEmail"), document.getElementById("contactMessage"), document.getElementById("contactSubmit")];
+					const contact = {
+						"name": inputs[0].value,
+						"email": inputs[1].value,
+						"message": inputs[2].value
+					};
+
+					inputs.forEach(element => {
+						element.setAttribute("disabled", "disabled");
+						element.style.cursor = "wait";
 					});
+					var request = new XMLHttpRequest();
+					request.open("POST", "https://script.google.com/macros/s/AKfycbwJKpGkcpf2kU2Cv6PnEPWfozqkmB5sfRTwtAcn_74JjKxUQGXwkSXVlOWVMX56xNAwdA/exec", true);
+					request.setRequestHeader('Content-Type', 'text/plain');
+					request.onreadystatechange = function() {
+						if (this.status >= 400) {
+							return false;
+						} else if (this.readyState === 4){
+							if (request.status === 200) {
+								const response = JSON.parse(this.responseText);
+								sending = false;
+								document.body.style.cursor = "";
+								inputs.forEach(element => {
+									element.removeAttribute("disabled");
+									element.style.cursor = "";
+								});
+								if (response["status"] == "success"){
+									document.getElementById("formContact").outerHTML = "<center><h3>You message request has been sent!</h3><p>Bradley should hopefully be in contact with you soon...</p></center>";
+								} else {
+									const error = document.getElementById("contactError");
+									try {
+										error.innerText = "Failed to send: Unable to send your message due to the following reason:\n" + response["response"];
+									} catch (e) {
+										error.innerText = "Failed to send: An unexpected error has prevented your message from being sent. We apologise for the inconvenience.";
+									}
+									error.style.display = "block";
+								}
+							}
+						}
+					};
+					request.onerror = function () {
+						sending = false;
+					}
+					request.send(JSON.stringify(contact));
 				});
 			});			
 		</script>
@@ -32,29 +73,29 @@
 		<div class="content">
 			<div class="main">
 				<div class="mainContent">
-					<form name="gform" id="gform" enctype="text/plain" action="https://docs.google.com/forms/d/e/1FAIpQLSc5xLc9h-3qkcOjOtT22nk5eh80iPMY1-oxVh9-CANb3rPqIA/formResponse?" target="hidden_iframe" onsubmit="submitted=true;">
+					<form id="formContact">
+						<div id="contactError">Sorry, but Javascript is required to get in contact.<noscript><style type="text/css">div#contactError{display:block!important}table.formTableAlignment{display:none!important}</style></noscript></div>
 						<table class="formTableAlignment">
 							<tr>
 								<td>
 									<div>
-										<table class="displayTableInline"><tr><td class="itemHold">Name:</td><td><input type="text" name="entry.2005620554" id="entry.2005620554" class="inputArea" placeholder="John Doe" required="required"></td></tr></table>
-										<table class="displayTableInline"><tr><td class="itemHold itemHoldLarge">Email<span class="addressDisplayBuffer"> address</span>:</td><td><input type="email" name="entry.1045781291" id="entry.1045781291" class="inputArea" placeholder="john@doe.com" required="required"></td></tr></table>
+										<table class="displayTableInline"><tr><td class="itemHold">Name:</td><td><input type="text" id="contactName" class="inputArea" placeholder="John Doe" required="required"></td></tr></table>
+										<table class="displayTableInline"><tr><td class="itemHold itemHoldLarge">Email<span class="addressDisplayBuffer"> address</span>:</td><td><input type="email" id="contactEmail" class="inputArea" placeholder="john@doe.com" required="required"></td></tr></table>
 									</div>
 								</td>
 							</tr>
 							<tr>
 								<td>
-									<textarea name="entry.839337160" id="entry.839337160" placeholder=" Message..." class="inputArea" required="required"></textarea>
+									<textarea id="contactMessage" placeholder=" Message..." class="inputArea" required="required"></textarea>
 								</td>
 							</tr>
 							<tr>
 								<td>
-									<input type="submit" value="Submit" class="submitButton">
+									<input type="submit" value="Submit" class="submitButton" id="contactSubmit">
 								</td>
 							</tr>
 						</table>
 					</form>
-					<iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted) {}"></iframe>
 				</div>
 			</div>
 			<div class="panel">

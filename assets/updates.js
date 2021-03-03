@@ -82,7 +82,7 @@ function loadUpdates(uid,tag) {
 				if (isIE) {
 					var el = document.getElementsByClassName("updateMessageAttachmentsResults");
 					for (var i=0; i < el.length; i++) {
-						el.item(i).classList.add("displayBlockOveride");
+						el.item(i).classList.add("displayBlockOverride");
 					}
 				} 
 			}

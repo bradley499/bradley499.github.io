@@ -121,8 +121,15 @@ li > ul {
 .borderNo {
 	border: 0px !important;
 }
-.displayBlockOveride {
+.displayBlockOverride {
 	display: block !important;
+}
+div#contactError, div#updateError {
+	display: none !important;
+	color: #ff0000;
+	font-weight: bold;
+	text-align: center;
+	padding-bottom: 1em;
 }
 table.formTableAlignment {
 	width: 100%;
@@ -133,12 +140,10 @@ table.displayTableInline {
 	min-width: 50%;
 	max-width: 50%;
 }
-td.itemHold
-{
+td.itemHold {
 	width: 60px;
 }
-td.itemHoldLarge
-{
+td.itemHoldLarge {
 	width: 120px;
 }
 .inputArea {
@@ -246,7 +251,7 @@ p.updateMessageAttachmentDisplayAltText {
 	margin-top: 8px;
 	margin-bottom: 16px;
 }
-div.updateMessageAttachmentImage, div.updatemessageattachmentaudio, div.updateMessageAttachmentVideo, div.updateMessageAttachmentVideoRender, div.updateMessageAttachmentPdf, div.updateMessageAttachmentMore {
+div.updateMessageAttachmentImage, div.updateMessageAttachmentAudio, div.updateMessageAttachmentVideo, div.updateMessageAttachmentVideoRender, div.updateMessageAttachmentPdf, div.updateMessageAttachmentMore {
 	display: inline-block;
 	width: 100%;
 	height: 400px;
@@ -331,11 +336,11 @@ div.updateMessageAttachmentPdf, div.updateMessageAttachmentDocument, div.updateM
 	background-position: center;
 	background-color: lightgray;
 	background-blend-mode: overlay;
-	transition: * 2.25s;
-	-moz-transition: * 2.25s;
-	-ms-transition: * 2.25s;
-	-o-transition: * 2.25s;
-	-webkit-transition: * 2.25s;
+	transition: all 2.25s;
+	-moz-transition: all 2.25s;
+	-ms-transition: all 2.25s;
+	-o-transition: all 2.25s;
+	-webkit-transition: all 2.25s;
 }
 div.updateMessageAttachmentPdf:hover, div.updateMessageAttachmentDocument, div.updateMessageAttachmentPresentation, div.updateMessageAttachmentSpreadsheet, div.updateMessageAttachmentUnknown, div.updateMessageAttachmentAudio, div.updateMessageAttachmentVideo:hover, div.updateMessageAttachmentMore:hover {
 	background-blend-mode: color-burn;
@@ -472,7 +477,8 @@ div.spinner {
 	span.addressDisplayBuffer {
 		display: none;
 	}
-	.itemHold {
+	td.itemHoldLarge {
+		width: 60px;
 	}
 	textarea.inputArea {
 		min-width: 97%;
