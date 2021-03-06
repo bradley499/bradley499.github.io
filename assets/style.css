@@ -200,6 +200,8 @@ h2.updateMessageTitle {
 	width: 100%;
 	font-size: xx-large;
 	font-weight: bold;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
 }
 h2.updateMessageShowLinkborderNo:hover::after {
 	content: none !important;

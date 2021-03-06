@@ -41,7 +41,9 @@ function loadUpdates(uid,tag) {
 		document.getElementById("updateContent").innerHTML = errorDocument;
 		return false;
 	}
-	getUrl("/updates.json",function(returned_data){res_data[0] = returned_data;});
+	getUrl("/updates.json",function(returned_data){
+		res_data[0] = returned_data;
+	});
 	if (uid == null || tag != null) {
 		getUrl("https://api.github.com/search/repositories?q=user:bradley499",function(returned_data){res_data[1] = returned_data;});
 	} else {
@@ -72,7 +74,7 @@ function loadUpdates(uid,tag) {
 			} catch(err) {}
 			res_data = res_data[0];
 			x = 0;
-			function classDisplayOverides(uid,isIE) {
+			function classDisplayOverrides(uid,isIE) {
 				if (uid != null) {
 					var el = document.getElementsByClassName("updateMessageLink");
 					for (var i = el.length - 1; i >= 0; i--) {
@@ -92,9 +94,12 @@ function loadUpdates(uid,tag) {
 					document.getElementById("updateContent").innerHTML = buildUpdates(res_data,uid,tag,git_repos);
 					x = 3;
 				} catch(err) {
-					window.setTimeout(function(){document.getElementById("updateContent").innerHTML = buildUpdates(res_data,uid,tag,git_repos);classDisplayOverides(uid,isIE);},100);
+					window.setTimeout(function(){
+						document.getElementById("updateContent").innerHTML = buildUpdates(res_data,uid,tag,git_repos);
+						classDisplayOverrides(uid,isIE);
+					},100);
 				}
-				classDisplayOverides(uid,isIE);
+				classDisplayOverrides(uid,isIE);
 			}
 		}
 		refreshTriggers();
@@ -142,7 +147,7 @@ function buildUpdates(data, uid, tag, git_repos) {
 			updateBase = "<div class=\"updateMessage {{isResultsPage}}\"><a {{hrefUid}} class=\"updateMessageLink\"><h2 class=\"updateMessageTitle {{isLinkable}} updateMessageShowLink{{isResultsPage}}\">{{header}}</h2></a>{{attachments}}{{perLine}}<div class=\"updateMessageTagsContainer\">{{categories}}</div><div class=\"updateMessagePublishTime\"><a {{hrefUid}} class=\"updateMessageLink\">{{time}}</a></div></div>";
 			perLine = "<p class=\"updateMessageContent\">{{message}}</p>";
 			hrefUid = "href=\"/updates/{{uid}}\"";
-			attachments = "<div class=\"updateMessageAttachmentsContainerBase\"><div class=\"updateMessageAttachmentsContainer {{containerBaseOveride}}\">{{attachment}}</div></div>";
+			attachments = "<div class=\"updateMessageAttachmentsContainerBase\"><div class=\"updateMessageAttachmentsContainer {{containerBaseOverride}}\">{{attachment}}</div></div>";
 			attachment = "<div class=\"updateMessageAttachments{{isResultsPageShow}} {{positional}}\">{{attachmentPreview}}</div>";
 			categories = "<a href=\"/updates/tags/{{category}}\" class=\"updateMessageTag link\" title=\"View more posts tagged: {{category}}\">#{{category}}</a>";
 			var uid_match = false;
@@ -262,9 +267,9 @@ function buildUpdates(data, uid, tag, git_repos) {
 					updateBaseBuild = updateBaseBuild.split("{{isResultsPage}}").join("");
 				}
 				if (uid_match || isIE) {
-					updateBaseBuild = updateBaseBuild.replace("{{containerBaseOveride}}","updateMessageAttachmentsContainerShowAll").split("{{isResultsPage}}").join("borderNo").split("{{isResultsPageShow}}").join("Results");
+					updateBaseBuild = updateBaseBuild.replace("{{containerBaseOverride}}","updateMessageAttachmentsContainerShowAll").split("{{isResultsPage}}").join("borderNo").split("{{isResultsPageShow}}").join("Results");
 				} else {
-					updateBaseBuild = updateBaseBuild.replace("{{containerBaseOveride}}","").split("{{isResultsPage}}").join("").split("{{isResultsPageShow}}").join("");
+					updateBaseBuild = updateBaseBuild.replace("{{containerBaseOverride}}","").split("{{isResultsPage}}").join("").split("{{isResultsPageShow}}").join("");
 				}
 				updateMessage.push(updateBaseBuild);
 				if (uid_match) {
@@ -276,7 +281,7 @@ function buildUpdates(data, uid, tag, git_repos) {
 				return errorDocument;
 			} else {
 				if (tag != null && updateMessage.length == 0) {
-					return "<p>Nothing to show, as no posts are tagged with \"<b>" + tag + "</b>\", maybe check again soon to see if anything has occured... <a href=\"/updates\" title=\"View all...\" class=\"link\">View all updates</a>?</p>";
+					return "<p>Nothing to show, as no posts are tagged with \"<b>" + tag + "</b>\", maybe check again soon to see if anything has occurred... <a href=\"/updates\" title=\"View all...\" class=\"link\">View all updates</a>?</p>";
 				}
 			}
 			return updateMessage.join("");
