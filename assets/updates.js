@@ -302,7 +302,7 @@ function convert(unixtimestamp){
 	var day = date.getDate();
 	var hours = date.getHours();
 	var minutes = "0" + date.getMinutes();
-	var convdataTime = month+'&nbsp;'+day+'&nbsp;'+year+'&nbsp;-&nbsp;'+hours + ':' + minutes.substr(-2);
+	var convdataTime = month+'&nbsp;'+day+',&nbsp;'+year+'&nbsp;-&nbsp;'+hours + ':' + minutes.substr(-2);
 	return convdataTime; 
 }
 
