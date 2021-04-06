@@ -126,7 +126,7 @@ li > ul {
 	display: block !important;
 }
 div#contactError, div#updateError {
-	display: none !important;
+	display: none;
 	color: #ff0000;
 	font-weight: bold;
 	text-align: center;

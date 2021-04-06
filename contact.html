@@ -23,13 +23,14 @@
 						"email": inputs[1].value,
 						"message": inputs[2].value
 					};
-
+					const error = document.getElementById("contactError");
+					error.style.display = "none";
 					inputs.forEach(element => {
 						element.setAttribute("disabled", "disabled");
 						element.style.cursor = "wait";
 					});
 					var request = new XMLHttpRequest();
-					request.open("POST", "https://script.google.com/macros/s/AKfycbyQe2cw1IUaXtptR3wk6DfAAiJFbb1aUALghRH07SnQXIwxoRjiZGWGnSfo1pMeDr4jig/exec", true);
+					request.open("POST", "https://script.google.com/macros/s/AKfycbx9nV4zQ5yo9uZ2inaCMW-TAi_z7BWDPUU8Y8wKlIjWeU3HFFRu4cwnXRAGWFJKGP6Qbw/exec", true);
 					request.setRequestHeader('Content-Type', 'text/plain');
 					request.onreadystatechange = function() {
 						if (this.status >= 400) {
@@ -45,13 +46,17 @@
 								if (response["status"] == "success"){
 									document.getElementById("formContact").outerHTML = "<center><h3>You message request has been sent!</h3><p>Bradley should hopefully be in contact with you soon...</p></center>";
 								} else {
-									const error = document.getElementById("contactError");
 									try {
-										error.innerText = "Failed to send: Unable to send your message due to the following reason:\n" + response["response"];
+										error.innerText = "Unable to send your message due to the following reason:\n" + response["response"];
 									} catch (e) {
 										error.innerText = "Failed to send: An unexpected error has prevented your message from being sent. We apologise for the inconvenience.";
 									}
 									error.style.display = "block";
+									window.scroll({
+										top: (error.offsetTop - error.offsetHeight), 
+										left: 0, 
+										behavior: 'smooth'
+									});
 								}
 							}
 						}
