@@ -279,12 +279,90 @@
 			],
 			[
 				"flitdb_presentation.mp4",
-				"The FlitDB presentation, narrated by my teammate John."
+				"The FlitDB presentation, narrated by my teammate Sky."
 			]
 		],
 		[
 			"hackathons"
 		],
 		1612781710
+	],
+	[
+		"FlitDB 1.0 release",
+		[
+			[
+				0,
+				"My first project to have a "
+			],
+			[
+				1,
+				"https://github.com/bradley499/flitdb/releases/tag/v1.0",
+				"production 1.0 release"
+			],
+			[
+				0,
+				".\nAfter many months of work, and countless rewrites of functional operations, I have finally released "
+			],
+			[
+				1,
+				"https://github.com/bradley499/flitdb/",
+				"FlitDB"
+			],
+			[
+				0,
+				" at a 1.0 release. "
+			],
+			[
+				1,
+				"https://github.com/bradley499/flitdb/",
+				"FlitDB"
+			],
+			[
+				0,
+				" started as a need to have a way to store data in a tiny environment, and whilst the need for that dissipated, the project had not. The "
+			],
+			[
+				1,
+				"https://github.com/bradley499/flitdb/",
+				"FlitDB"
+			],
+			[
+				0,
+				" project started as a Hackathon entry, where it won first place; by all means, what was submitted as our project was not even close to production ready, and also had many issues in – due to the 24 hour window of development of the competition – but the judges had seen real potential in the project, and awarded us first place. Being comfortable with first place wasn’t enough for me, I wanted to do more, I wanted to see "
+			],
+			[
+				1,
+				"https://github.com/bradley499/flitdb/",
+				"FlitDB"
+			],
+			[
+				0,
+				" be useful and fully functional, so I kept working on it. I started by rewriting it in pure C, as originally it started as a C++ project, but I felt that the C++ linkage would provide issues for people attempting to embed the project within any C projects – hence a full C compatible rewrite was needed. I learnt a lot about C during this process, as although the project was written in C++, I was fairly new to that language; but to me, C was something that I had never explicitly worked with; this originally proved difficult, as certain conventions from many other languages that I had worked with were essentially non-existent, or completely different to how I would have expected them to be. Alas, I persevered and stuck to it, this proved extremely beneficial to me, as I ended up researching about almost everything that C had to offer, and I really started to like it. I liked it so much that I started to pivot any other projects that I worked on towards C. After some time, the project started to have a more cohesive structure, and allowed for the testing of it on different platforms, as initially "
+			],
+			[
+				1,
+				"https://github.com/bradley499/flitdb/",
+				"FlitDB"
+			],
+			[
+				0,
+				" was only compatible with Linux, but after removing Linux syscalls used for reading and writing, I replaced them with the standard conventions that libc used, this proved very beneficial as it allowed for compilation on MacOS systems; which amazed me, as I never imagined that my own project would be cross platform; but here I was writing code that could be compiled and executed on both systems. A few more months had passed, and more useful features were added, along with fixing and optimising the allocation of memory, etc.\nFast forward to today, I was extremely happy to release "
+			],
+			[
+				1,
+				"https://github.com/bradley499/flitdb/",
+				"FlitDB"
+			],
+			[
+				0,
+				" at 1.0, after many months of work, I couldn’t be happier with the way that the project has ended up; by all means I wish to continue working on it in the future, but this milestone, is something that I am very proud to have reached."
+			]
+		],
+		[],
+		[
+			"personal",
+			"flitdb"
+		],
+		1627739440
 	]
 ]
