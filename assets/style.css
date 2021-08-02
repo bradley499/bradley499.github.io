@@ -125,7 +125,7 @@ div#contactError {
 	font-size: larger;
 }
 
-div#blogPostsLoadingJavascript {
+p#blogPostsLoadingJavascript {
 	display: none;
 }
 
