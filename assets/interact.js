@@ -261,7 +261,7 @@ switch (page_id) {
 			const searchPath = "/blog/search/";
 			if (window.location.pathname.startsWith(searchPath)) {
 				const searchTag = window.location.pathname.substr(searchPath.length);
-				if (page_id == "6d2cd37929c7c76ab3de0a8538b13998") {
+				if (page_id == "aa8eb2fe477b2d36ecc0f14d6422513f") {
 					document.title = searchTag.trim() + " | Search | Bradley Marshall";
 					let blogPostsTitle = document.getElementById("errorTitle");
 					blogPostsTitle.id = "blogPostsTitle";
