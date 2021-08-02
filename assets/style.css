@@ -125,10 +125,6 @@ div#contactError {
 	font-size: larger;
 }
 
-p#blogPostsLoadingJavascript {
-	display: none;
-}
-
 .centerContent {
 	text-align: center
 }
@@ -331,11 +327,11 @@ div#blogPosts > p {
 	margin-top: 0.75em;
 }
 
-div#blogPosts > div > a:hover > div {
+div#blogPosts > div > a:hover > div, div#blogPosts > div > div:hover {
 	background-color: #f3f3f3;
 }
 
-div#blogPosts > div > a > div {
+div#blogPosts > div > a > div, div#blogPosts > div > div {
 	border-bottom: 3px solid #d5d5d5;
 	margin-bottom: 1em;
 	padding: 0.3em 1em;
@@ -344,13 +340,14 @@ div#blogPosts > div > a > div {
 	border-top-right-radius: 1em;
 }
 
-div#blogPosts > div > a > div > h3 {
+div#blogPosts > div > a > div > h3, div#blogPosts > div > div > a > h3 {
 	font-size: 30px;
+	color: #000000;
 	margin: 0.4em 0 0;
 	word-break: break-word;
 }
 
-div#blogPosts > div > a > div > em {
+div#blogPosts > div > a > div > em, div#blogPosts > div > div > a > em {
 	color: #666666;
 	display: block;
 	font-size: 14px;
@@ -360,14 +357,15 @@ div#blogPosts > div > a > div > em {
 	margin: 0.3em 0;
 }
 
-div#blogPosts > div > a > div > p {
+div#blogPosts > div > a > div > p, div#blogPosts > div > div > a > p {
 	padding: 0 15px;
+	color: #000000;
 	margin: 0.3em 0 auto;
 	text-align: left !important;
 	word-break: break-word;
 }
 
-div#blogPosts > div > a > div > p > a {
+div#blogPosts > div > a > div > p > a, div#blogPosts > div > div > a > p > a {
 	word-break: break-word;
 }
 
