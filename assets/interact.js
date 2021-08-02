@@ -118,7 +118,7 @@ switch (page_id) {
 		});
 		break;
 	}
-	case "aeeb3f9beb9de9d8a40e72b74dc3ab8e": case "6d2cd37929c7c76ab3de0a8538b13998":
+	case "aeeb3f9beb9de9d8a40e72b74dc3ab8e": case "aa8eb2fe477b2d36ecc0f14d6422513f":
 	{
 		var res_data = [false,false];
 		async function loadUpdates(tag) {
