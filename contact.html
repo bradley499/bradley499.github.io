@@ -1,128 +1,88 @@
 <!DOCTYPE html>
-<html>
-	<head>
-		<title>Contact ~ Bradley Marshall</title>
-		<meta name="description" content="Contact Bradley Marshall for further information">
-		<meta name="viewport" content="width=device-width, user-scalable=no">
-		<link rel="stylesheet" type="text/css" href="assets/style.css">
-		<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
-		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-157001746-1"></script>
-		<script>
-			window.dataLayer = window.dataLayer || [];
-			function gtag(){dataLayer.push(arguments);}
-			gtag('js', new Date());
-			gtag('config', 'UA-157001746-1');
-		</script>
-		<script type="text/javascript">
-			document.addEventListener("DOMContentLoaded",function() {
-				document.getElementById("formContact").addEventListener("submit",function(e) {
-					e.preventDefault();
-					const inputs = [document.getElementById("contactName"), document.getElementById("contactEmail"), document.getElementById("contactMessage"), document.getElementById("contactSubmit")];
-					const contact = {
-						"name": inputs[0].value,
-						"email": inputs[1].value,
-						"message": inputs[2].value
-					};
-					const error = document.getElementById("contactError");
-					error.style.display = "none";
-					inputs.forEach(element => {
-						element.setAttribute("disabled", "disabled");
-						element.style.cursor = "wait";
-					});
-					var request = new XMLHttpRequest();
-					request.open("POST", "https://script.google.com/macros/s/AKfycbx9nV4zQ5yo9uZ2inaCMW-TAi_z7BWDPUU8Y8wKlIjWeU3HFFRu4cwnXRAGWFJKGP6Qbw/exec", true);
-					request.setRequestHeader('Content-Type', 'text/plain');
-					request.onreadystatechange = function() {
-						if (this.status >= 400) {
-							return false;
-						} else if (this.readyState === 4){
-							if (request.status === 200) {
-								const response = JSON.parse(this.responseText);
-								document.body.style.cursor = "";
-								inputs.forEach(element => {
-									element.removeAttribute("disabled");
-									element.style.cursor = "";
-								});
-								if (response["status"] == "success"){
-									document.getElementById("formContact").outerHTML = "<center><h3>You message request has been sent!</h3><p>Bradley should hopefully be in contact with you soon...</p></center>";
-								} else {
-									try {
-										error.innerText = "Unable to send your message due to the following reason:\n" + response["response"];
-									} catch (e) {
-										error.innerText = "Failed to send: An unexpected error has prevented your message from being sent. We apologise for the inconvenience.";
-									}
-									error.style.display = "block";
-									window.scroll({
-										top: (error.offsetTop - error.offsetHeight), 
-										left: 0, 
-										behavior: 'smooth'
-									});
-								}
-							}
-						}
-					};
-					request.send(JSON.stringify(contact));
-				});
-			});			
-		</script>
-	</head>
-	<body>
-		<div class="banner">
-			<a href="/"><div class="bannerImg"></div></a>
-			<h1 id="name">Bradley Marshall</h1>
-			<p class="about">Software Engineer</p>
+<html lang="en">
+<head>
+	<title>Contact | Bradley Marshall</title>
+	<meta name="description" content="Contact Bradley Marshall for further information">
+	<meta name="viewport" content="width=device-width, user-scalable=no">
+	<link rel="stylesheet" type="text/css" href="assets/style.css">
+	<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+	<script type="text/javascript">const page = "6d2cd37929c7c76ab3de0a8538b13998";</script>
+	<script type="text/javascript" src="/assets/interact.js"></script>
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-157001746-1"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() { dataLayer.push(arguments); }
+		gtag('js', new Date());
+		gtag('config', 'UA-157001746-1');
+	</script>
+</head>
+<body class="generic">
+	<div class="mainContent">
+		<div id="headerNavigation">
+			<a href="/" id="appLogo" title="Bradley Marshall"></a>
+			<a href="/contact" class="navLink" id="contactLink" title="Contact me">Contact</a>
+			<a href="https://github.com/bradley499" class="navLink" id="github" title="View my GitHub"
+				target="_blank"></a>
 		</div>
-		<div class="content">
-			<div class="main">
-				<div class="mainContent">
-					<form id="formContact">
-						<div id="contactError">Sorry, but Javascript is required to get in contact.<noscript><style type="text/css">div#contactError{display:block!important}table.formTableAlignment{display:none!important}</style></noscript></div>
-						<table class="formTableAlignment">
-							<tr>
-								<td>
-									<div>
-										<table class="displayTableInline"><tr><td class="itemHold">Name:</td><td><input type="text" id="contactName" class="inputArea" placeholder="John Doe" required="required"></td></tr></table>
-										<table class="displayTableInline"><tr><td class="itemHold itemHoldLarge">Email<span class="addressDisplayBuffer"> address</span>:</td><td><input type="email" id="contactEmail" class="inputArea" placeholder="john@doe.com" required="required"></td></tr></table>
-									</div>
-								</td>
-							</tr>
-							<tr>
-								<td>
-									<textarea id="contactMessage" placeholder=" Message..." class="inputArea" required="required"></textarea>
-								</td>
-							</tr>
-							<tr>
-								<td>
-									<input type="submit" value="Submit" class="submitButton" id="contactSubmit">
-								</td>
-							</tr>
-						</table>
-					</form>
-				</div>
+		<div>
+			<div class="sidePadding">
+				<section class="sidePadding">
+					<div class="bigPad centerContent">
+						<h1 class="bigCenter">Contact</h1>
+						<form id="formContact">
+							<p class="centerContent" id="contactHow">To get in contact with me, please use the contact form below.</p>
+							<div id="contactError">Sorry, but Javascript is required to get in contact.<noscript>
+									<style type="text/css">
+										div#contactError {
+											display: block !important
+										}
+										div#contactMain, p#contactHow {
+											display: none !important
+										}
+									</style>
+								</noscript>
+							</div>
+							<div id="contactMain">
+								<div>
+									<h4>Name:</h4>
+									<input type="text" id="contactName" placeholder="John Doe"
+										required="required">
+								</div>
+								<div>
+									<h4>Email address:</h4>
+									<input type="email" id="contactEmail" placeholder="john@doe.com"
+										required="required">
+								</div>
+								<div>
+									<h4>Message:</h4>
+									<textarea id="contactMessage" placeholder=" Message..."
+										required="required"></textarea>
+								</div>
+								<div class="privacy">
+									<p><input type="checkbox" checked="checked" disabled="disabled" style="vertical-align:middle">By submitting this form, you accept our <a href="policies#privacy" title="View the privacy policy" target="_blank">privacy policy</a>.</p>
+								</div>
+								<input type="submit" id="contactSubmit" value="Submit" class="submitButton" id="contactSubmit">
+							</div>
+						</form>
+					</div>
+				</section>
 			</div>
-			<div class="panel">
-				<div>
-					<ul class="navigation">
-						<li>
-							<a href="/" title="Home">Home</a>
-						</li>
-						<li>
-							<a href="/contact" title="Contact">Contact</a>
-						</li>
-						<li>
-							<a href="/updates" title="Blog">Blog</a>
-						</li>
-						<li>
-							<a href="https://github.com/bradley499/" title="Github @bradley499">GitHub</a>
-						</li>
-					</ul>
-					<hr>
+			<footer>
+				<div class="footerDecoration">
+					<div class="leftBottom">
+						<div></div>
+					</div>
+					<div class="rightBottom">
+						<div></div>
+					</div>
 				</div>
-				<em>&copy; Bradley Marshall</em>
-			</div>
+				<div class="footerNavigation" class="privacy">
+					<p class="noBottom">This page uses <a href="/policies#cookies" class="boldLink"
+							title="Read the Cookie Policy">Cookies</a> for analytical purposes.</p>
+					<em>&copy; Bradley Marshall <span id="copyrightYear"></span></em>
+				</div>
+			</footer>
 		</div>
-		<div id="privacy">
-			<p>This page uses <a href="/policies#cookies" class="boldLink" title="Read the Cookie Policy">Cookies</a> for analytical perposes.</p>
-		</div>
-	</body>
+	</div>
+</body>
 </html>
