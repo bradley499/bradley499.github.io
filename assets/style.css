@@ -284,6 +284,7 @@ input#contactName, input#contactEmail, input#contactSubmit, textarea {
 	box-sizing: border-box;
 	outline: none;
 	width: clamp(50vw, 100ch, 300px);
+	max-width: 100% !important;
 }
 
 input#contactSubmit {
