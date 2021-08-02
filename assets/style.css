@@ -310,6 +310,7 @@ h1#errorTitle {
 
 h1#blogPostsTitle {
 	margin-bottom: 0.75em;
+	word-break: break-word;
 }
 
 p#blogPostsMore {
