@@ -185,7 +185,6 @@ switch (page_id) {
 						post[0].title = "Take a look at the repository \"" + post_data[0] + "\"";
 						post_data[1][0].split("\n").forEach(paragraph => {
 							description[1].push(document.createElement("p"));
-							console.log(paragraph);
 							description[1][description[1].length - 1].innerText = paragraph;
 						});
 						description[1][description[1].length - 1].innerHTML += " <a href=\"" + post_data[1][1] + "\" target=\"_blank\">" + post_data[1][1] + "</a>";
@@ -227,7 +226,7 @@ switch (page_id) {
 					posts.appendChild(post[0]);
 					results = true;
 				}
-			} catch(e) {console.log(e)}
+			} catch(e) {}
 			if (!results) {
 				const noResults = document.createElement("p");
 				if (tag != null) {
@@ -245,9 +244,7 @@ switch (page_id) {
 			unixTimestamp = unixTimestamp || 0;
 			var months_arr = ['January','February','March','April','May','June','July','August','September','October','November','December'];
 			var date = new Date(unixTimestamp*1000);
-			console.warn(date)
 			date = new Date(date.getTime() + (date.getTimezoneOffset()*60000));
-			console.warn(date)
 			var year = date.getFullYear();
 			var month = months_arr[date.getMonth()];
 			var day = date.getDate();
