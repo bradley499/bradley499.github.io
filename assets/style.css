@@ -83,10 +83,15 @@ p {
 }
 
 p,
-ul {
+ul,
+ol {
 	margin: 0 auto 1em;
 	max-width: 100ch;
 	line-height: 27px;
+}
+
+ol > li {
+	text-align: left;
 }
 
 li:not(:last-child):after {
@@ -118,6 +123,10 @@ div#contactError {
 	color: #ff0000;
 	font-weight: bolder;
 	font-size: larger;
+}
+
+div#blogPostsLoadingJavascript {
+	display: none;
 }
 
 .centerContent {

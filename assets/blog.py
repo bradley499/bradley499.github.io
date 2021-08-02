@@ -5,7 +5,7 @@ import tzlocal
 
 with open("../blog/updates.json", "r") as updates:
 	updates = json.load(updates)
-	updates = sorted(updates, key = lambda x: x[4], reverse = True)
+	updates = sorted(updates, key = lambda x: x[3], reverse = True)
 	titles = []
 	for post in updates:
 		title = "".join(c for c in post[0].replace(" ","-").lower() if c in "abcdefghijklmnopqrstuvwxyz0123456789-.")
@@ -14,7 +14,7 @@ with open("../blog/updates.json", "r") as updates:
 			exit(1)
 		else:
 			titles.append(title)
-		for tag in post[3]:
+		for tag in post[2]:
 			if tag.lower() != "".join(c for c in tag.lower() if c in "abcdefghijklmnopqrstuvwxyz0123456789_."):
 				print("Unable to updates blogs, as there is a tag with an value that does not conform to the standard format \"{0}\".".format(tag))
 				exit()
@@ -26,8 +26,8 @@ with open("../blog/updates.json", "r") as updates:
 		exit(1)
 	for x in range(len(titles)):
 		with open("../blog/{0}.html".format(titles[x]), "w") as blog:
-			tags = ["<a title=\"View more posts tagged: {0}\" href=\"/blog/search/{0}\">#{0}</a>".format(tag) for tag in updates[x][3]]
-			time = datetime.fromtimestamp(updates[x][4], tzlocal.get_localzone())
+			tags = ["<a title=\"View more posts tagged: {0}\" href=\"/blog/search/{0}\">#{0}</a>".format(tag) for tag in updates[x][2]]
+			time = datetime.fromtimestamp(updates[x][3], tzlocal.get_localzone())
 			if bool(time.dst()):
 				time -= timedelta(hours=(int)(time.dst().seconds / 3600))
 			time = time.strftime("%B %-d, %Y - %H:%M")

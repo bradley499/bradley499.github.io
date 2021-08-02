@@ -128,18 +128,11 @@ switch (page_id) {
 			const githubUrl = "https://api.github.com/search/repositories?q=user:bradley499";
 			const posts = document.createElement("div");
 			try {
-				if (tag == null || tag == "GitHub") {
+				if (tag == null || tag == "github") {
 					await Promise.all([res_data[0] = await (await fetch(updatesUrl)).json(), res_data[1] = await (await fetch(githubUrl)).json()]);
 				} else {
 					res_data[0] = await (await fetch(updatesUrl)).json();
 					res_data[1] = [];
-				}
-				var timeout = new Date(new Date().getTime() + 30000);
-				var git_repos = 0;
-				if (new Date() > timeout){
-					if (document.getElementById("errorDisplay") == undefined){
-						document.getElementById("updateContent").innerHTML = "<div id=\"errorDisplay\"><h2>Slowly loading posts...</h2><p>It would appear that your browser is taking very long to response...</p><p><span id=\"clickToRefresh\">Click <span class=\"link\">here</span> to reload the page.</span></p></div>";
-					}
 				}
 				try {
 					for (let i = 0; i < res_data[0].length; i++) {
@@ -147,25 +140,23 @@ switch (page_id) {
 						res_data[0][i][1] = null;
 					}
 					if (res_data[1]["items"].length > 0) {
-						git_repos = res_data[1]["items"].length;
 						for (let i = res_data[1]["items"].length - 1; i >= 0; i--) {
-							res_data[0].push([res_data[1]["items"][i]["name"],["Bradley created a new repository called \"" + res_data[1]["items"][i]["name"] + "\" on GitHub.\n" + res_data[1]["items"][i]["description"] + "\nTake a look at it on GitHub at: ", res_data[1]["items"][i]["html_url"]],[],["GitHub"],Date.parse(res_data[1]["items"][i]["created_at"])/1000,false]);
+							res_data[0].push([res_data[1]["items"][i]["name"],["Bradley created a new repository called \"" + res_data[1]["items"][i]["name"] + "\" on GitHub.\n" + res_data[1]["items"][i]["description"] + "\nTake a look at it on GitHub at: ", res_data[1]["items"][i]["html_url"]],["GitHub"],Date.parse(res_data[1]["items"][i]["created_at"])/1000,false]);
 						}
 					}
 				} catch(err) {}
 				res_data[0] = res_data[0].sort(function(a,b) {
-					return b[4] - a[4];
+					return b[3] - a[3];
 				});
 				res_data = res_data[0];
-				var post_id = (res_data.length - git_repos);
 				for (let i = 0; i < res_data.length; i++) {
 					const post_data = res_data[i];
 					const post = [document.createElement("a"), document.createElement("div")];
 					const title = document.createElement("h3");
 					title.innerText = post_data[0];
 					let description = [document.createElement("em"), []];
-					description[0].innerHTML = convert(post_data[4]);
-					if (post_data[5]) {
+					description[0].innerHTML = convert(post_data[3]);
+					if (post_data[4]) {
 						description[1].push(document.createElement("p"));
 						let relativeTitle = [post_data[0].toLowerCase().split(" ").join("-"), ""];
 						const allowedCharacters = "abcdefghijklmnopqrstuvwxyz0123456789-.".split("");
@@ -178,7 +169,6 @@ switch (page_id) {
 						description[1][0].innerText = "Click to read this blog post.";
 						description[1][0].style.fontStyle = "italic";
 						post[0].title = "Read the blog post \"" + post_data[0] + "\"";
-						post_id -= 1;
 					} else {
 						post[0].href = post_data[1][1];
 						post[0].target = "_blank";
@@ -191,9 +181,9 @@ switch (page_id) {
 					}
 					if (tag != null) {
 						let tag_match = false;
-						for (var ii = post_data[3].length - 1; ii >= 0; ii--) {
+						for (var ii = post_data[2].length - 1; ii >= 0; ii--) {
 							if (tag != null){
-								if (post_data[3][ii].toLowerCase() == tag.toLowerCase()){
+								if (post_data[2][ii].toLowerCase() == tag.toLowerCase()){
 									tag_match = true;
 								}
 							}
@@ -204,7 +194,7 @@ switch (page_id) {
 					}
 					const tags = document.createElement("ul");
 					tags.className = "tags";
-					post_data[3].forEach(tagName => {
+					post_data[2].forEach(tagName => {
 						const tag_element = [document.createElement("li"),document.createElement("a")];
 						tagName = ((tagName == "GitHub") ? tagName : tagName.toLowerCase());
 						tag_element[1].innerText = "#" + tagName;
@@ -219,22 +209,28 @@ switch (page_id) {
 					description[1].forEach(paragraph => {
 						post[1].appendChild(paragraph);
 					});
-					if (post_data[3].length > 0) {
+					if (post_data[2].length > 0) {
 						post[1].appendChild(tags);
 					}
 					post[0].appendChild(post[1]);
 					posts.appendChild(post[0]);
 					results = true;
 				}
-			} catch(e) {}
+			} catch(e) {console.log(e)}
 			if (!results) {
 				const noResults = document.createElement("p");
+				noResults.classList.add("centerContent");
 				if (tag != null) {
 					noResults.innerHTML = "Unfortunately, there were no posts that matched your search. Why not <a href=\"/blog\" title=\"View all blog posts\">view all blog posts</a>?";
 				} else {
 					noResults.innerHTML = "Unfortunately an error occurred, and no posts were loaded. Why not <a href=\"/blog\" title=\"Try to reload blog posts\">try again</a>?";
 				}
 				posts.appendChild(noResults);
+			} else if (tag != null) {
+				const viewAll = document.createElement("p");
+				viewAll.classList.add("centerContent");
+				viewAll.innerHTML = "<a href=\"/blog/\" title=\"View all blog posts\">View all blog posts?</a>";
+				posts.appendChild(viewAll);
 			}
 			const blogList = document.getElementById("blogPosts");
 			blogList.innerHTML = "";

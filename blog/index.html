@@ -30,7 +30,16 @@
 					<div class="bigPad">
 						<h1 class="bigCenter centerContent" id="blogPostsTitle">Blog posts</h1>
 						<div id="blogPosts">
-							<p class="centerContent">Loading...</p>
+							<p class="centerContent" id="blogPostsLoadingMessage">Loading...</p>
+							<p class="centerContent" id="blogPostsLoadingJavascript">Unable to load the list of blog posts, as your device has JavaScript disabled.</p>
+							<noscript><style type="text/css">
+								#blogPostsLoadingMessage {
+									display: none;
+								}
+								div#blogPostsLoadingJavascript {
+									display: block;
+								}
+							</style></noscript>
 						</div>
 					</div>
 				</section>
