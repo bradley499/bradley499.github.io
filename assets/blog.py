@@ -79,15 +79,23 @@ def main():
 		blogPosts = "".join(blogPosts)
 		index.truncate(0)
 		index.write("<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n	<title>Blog | Bradley Marshall</title>\n	<meta name=\"description\" content=\"Blog updates published by Bradley Marshall\">\n	<meta name=\"viewport\" content=\"width=device-width, user-scalable=no\">\n	<link rel=\"stylesheet\" type=\"text/css\" href=\"/assets/style.css\">\n	<link rel=\"shortcut icon\" type=\"image/x-icon\" href=\"/favicon.ico\">\n	<script type=\"text/javascript\">const page = \"aeeb3f9beb9de9d8a40e72b74dc3ab8e\";</script>\n	<script type=\"text/javascript\" src=\"/assets/interact.js\"></script>\n	<script async src=\"https://www.googletagmanager.com/gtag/js?id=UA-157001746-1\"></script>\n	<script>\n		window.dataLayer = window.dataLayer || [];\n		function gtag() { dataLayer.push(arguments); }\n		gtag('js', new Date());\n		gtag('config', 'UA-157001746-1');\n	</script>\n</head>\n<body class=\"generic\">\n	<div class=\"mainContent\">\n		<div id=\"headerNavigation\">\n			<a href=\"/\" id=\"appLogo\" title=\"Bradley Marshall\"></a>\n			<a href=\"/contact\" class=\"navLink\" id=\"contactLink\" title=\"Contact me\">Contact</a>\n			<a href=\"https://github.com/bradley499\" class=\"navLink\" id=\"github\" title=\"View my GitHub\"\n				target=\"_blank\"></a>\n		</div>\n		<div>\n			<div class=\"sidePadding\">\n				<section class=\"sidePadding\">\n					<div class=\"bigPad\">\n						<h1 class=\"bigCenter centerContent\" id=\"blogPostsTitle\">Blog posts</h1>\n						<div id=\"blogPosts\">\n							<div>" + blogPosts + "\n							</div>\n</div>\n</div>\n</section>\n</div>\n<footer>\n<div class=\"footerDecoration\">\n<div class=\"leftBottom\">\n	<div></div>\n</div>\n<div class=\"rightBottom\">\n	<div></div>\n</div>\n</div>\n<div class=\"footerNavigation\" class=\"privacy\">\n<p class=\"noBottom\">This page uses <a href=\"/policies#cookies\" class=\"boldLink\"\n		title=\"Read the Cookie Policy\">Cookies</a> for analytical purposes.</p>\n<em>&copy; Bradley Marshall <span id=\"copyrightYear\"></span></em>\n</div>\n</footer>\n</div>\n</div>\n</body>\n</html>")
-	with open("../sitemap.txt", "w") as sitemap:
+	with open("../sitemap.xml", "w") as sitemap:
 		urls = []
 		for url in sitemap_url:
 			urls.append("https://bradley499.github.io/" + url)
 		sitemap.truncate(0)
+		sitemap.write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">")
 		while len(urls) > 0:
-			sitemap.write(urls.pop(0))
-			if len(urls) > 0:
-				sitemap.write("\n")
+			url = urls.pop(0)
+			sitemap.write("<url>\n	<loc>"+url+"</loc>\n	<lastmod>" + datetime.now().strftime("%Y-%m-%d") + "</lastmode>\n	<priority>");
+			if url == "https://bradley499.github.io/":
+				sitemap.write("1.0")
+			elif url in ["https://bradley499.github.io/contact", "https://bradley499.github.io/blog/"]:
+				sitemap.write("0.8")
+			else:
+				sitemap.write("0.7")
+			sitemap.write("</priority>\n</url>\n")
+		sitemap.write("</urlset>")
 
 if __name__ == "__main__":
 	main()
