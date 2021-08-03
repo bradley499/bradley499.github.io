@@ -495,26 +495,33 @@ div.blogPostTime > p.policyUpdatedTime::before {
 		text-align: center;
 		margin-bottom: 0.5em;
 	}
-	div#blogPosts > div > a > div {
+	div#blogPosts > div > a > div,
+	div#blogPosts > div > div {
 		padding: 0;
 		margin-bottom: 2em;
 	}
-	div#blogPosts > div > a:hover > div {
+	div#blogPosts > div > a:hover > div,
+	div#blogPosts > div > div:hover {
 		background-color: unset;
 	}
 	div#blogPosts > div > a > div > h3,
 	div#blogPosts > div > a > div > em,
 	div#blogPosts > div > a > div > p,
+	div#blogPosts > div > div > a > h3,
+	div#blogPosts > div > div > a > em,
+	div#blogPosts > div > div > a > p,
 	ul.tags {
 		padding: 0;
 		margin: 3px 0;
 	}
-	div#blogPosts > div > a > div > h3 {
+	div#blogPosts > div > a > div > h3,
+	div#blogPosts > div > div > a > h3 {
 		font-size: 30px;
 		margin-bottom: 10px;
 	}
-	div#blogPosts > div > a > div > em {
-		margin-bottom: 6px;
+	div#blogPosts > div > a > div > em,
+	div#blogPosts > div > div > a > em {
+		margin-bottom: 6px !important;
 	}
 	ul.tags#blogPostTags {
 		text-align: center;
