@@ -31,7 +31,7 @@ def main():
 			sitemap_url.append("blog/{0}".format(titles[x]))
 			with open("../blog/{0}.html".format(titles[x]), "w") as blog:
 				tags = ["<a title=\"View more posts tagged: {0}\" href=\"/blog/search/{0}\">#{0}</a>".format(tag) for tag in updates[x][2]]
-				tags = "										<li>" + "</li>\n										<li>".join(tags) + "</li>"
+				tags = "										<li>" + "</li><li>".join(tags) + "</li>"
 				tags = "<li class=\"noAfter\">".join(tags.rsplit("<li>", 1))
 				time = datetime.fromtimestamp(updates[x][3], tzlocal.get_localzone())
 				if bool(time.dst()):
