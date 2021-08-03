@@ -244,9 +244,9 @@ switch (page_id) {
 			var year = date.getFullYear();
 			var month = months_arr[date.getMonth()];
 			var day = date.getDate();
-			var hours = date.getHours();
+			var hours = "0" + date.getHours();
 			var minutes = "0" + date.getMinutes();
-			return month+'&nbsp;'+day+',&nbsp;'+year+'&nbsp;-&nbsp;'+hours + ':' + minutes.substr(-2);
+			return month+'&nbsp;'+day+',&nbsp;'+year+'&nbsp;-&nbsp;'+hours.substr(-2)+':'+minutes.substr(-2);
 		}
 		document.addEventListener("DOMContentLoaded", function(){
 			document.getElementById("copyrightYear").innerText = (new Date).getFullYear();
