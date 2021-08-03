@@ -87,7 +87,7 @@ def main():
 		sitemap.write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">")
 		while len(urls) > 0:
 			url = urls.pop(0)
-			sitemap.write("<url>\n	<loc>"+url+"</loc>\n	<lastmod>" + datetime.now().strftime("%Y-%m-%d") + "</lastmode>\n	<priority>");
+			sitemap.write("<url>\n	<loc>"+url+"</loc>\n	<lastmod>" + datetime.now().strftime("%Y-%m-%d") + "</lastmod>\n	<priority>");
 			if url == "https://bradley499.github.io/":
 				sitemap.write("1.0")
 			elif url in ["https://bradley499.github.io/contact", "https://bradley499.github.io/blog/"]:
