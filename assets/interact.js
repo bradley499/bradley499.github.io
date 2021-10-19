@@ -125,7 +125,7 @@ switch (page_id) {
 			tag = tag || null;
 			var results = false;
 			const updatesUrl = "/blog/updates.json";
-			const githubUrl = "https://api.github.com/search/repositories?q=user:bradley499";
+			const githubUrl = "https://api.github.com/users/bradley499/repos";
 			const posts = document.createElement("div");
 			try {
 				if (tag == null || tag == "github") {
@@ -139,9 +139,9 @@ switch (page_id) {
 						res_data[0][i].push(true);
 						res_data[0][i][1] = null;
 					}
-					if (res_data[1]["items"].length > 0) {
-						for (let i = res_data[1]["items"].length - 1; i >= 0; i--) {
-							res_data[0].push([res_data[1]["items"][i]["name"],["Bradley created a new repository called \"" + res_data[1]["items"][i]["name"] + "\" on GitHub.\n" + res_data[1]["items"][i]["description"] + "\nTake a look at it on GitHub at: ", res_data[1]["items"][i]["html_url"]],["GitHub"],Date.parse(res_data[1]["items"][i]["created_at"])/1000,false]);
+					if (res_data[1].length > 0) {
+						for (let i = res_data[1].length - 1; i >= 0; i--) {
+							res_data[0].push([res_data[1][i]["name"],["Bradley created a new repository called \"" + res_data[1][i]["name"] + "\" on GitHub.\n" + res_data[1][i]["description"] + "\nTake a look at it on GitHub at: ", res_data[1][i]["html_url"]],["GitHub"],Date.parse(res_data[1][i]["created_at"])/1000,false]);
 						}
 					}
 				} catch(err) {}
