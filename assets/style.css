@@ -492,7 +492,7 @@ div.blogPostTime > p.policyUpdatedTime::before {
 		max-width: 50%;
 	}
 	p {
-		text-align: center;
+		text-align: justify;
 		margin-bottom: 0.5em;
 	}
 	div#blogPosts > div > a > div,
@@ -513,6 +513,9 @@ div.blogPostTime > p.policyUpdatedTime::before {
 	ul.tags {
 		padding: 0;
 		margin: 3px 0;
+	}
+	div#blogPosts > div > a > div > p {
+		text-align: justify !important;
 	}
 	div#blogPosts > div > a > div > h3,
 	div#blogPosts > div > div > a > h3 {
