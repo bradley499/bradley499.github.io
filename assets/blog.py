@@ -4,7 +4,7 @@ from datetime import datetime, timedelta
 import tzlocal
 
 def main():
-	sitemap_url = ["","contact","blog/", "laturon"]
+	sitemap_url = ["","contact","blog/", "laturon/"]
 	with open("../blog/updates.json", "r") as updates:
 		blogPosts = []
 		updates = json.load(updates)
