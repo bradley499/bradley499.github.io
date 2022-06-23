@@ -239,5 +239,28 @@
 			"solent"
 		],
 		1653743567
+	],
+	[
+		"First class honours degree",
+		[
+			[
+				0,
+				"I'm proud to announce that I have achieved a First Class Honours degree from "
+			],
+			[
+				1,
+				"https://www.solent.ac.uk/",
+				"Solent University"
+			],
+			[
+				0,
+				" in Software Engineering. After 3 years of hard work, and a tedious amount of effort, I was today awarded what I had been aiming for throughout my entire journey at university. I'd like to thank the people I met: friends, lecturers, and all academic staff; who's guidance, and continued support, allowed me to officially get to the level and skill-set that I am now."
+			]
+		],
+		[
+			"personal",
+			"solent"
+		],
+		1655805277
 	]
 ]
